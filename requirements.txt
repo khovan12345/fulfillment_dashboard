@@ -1,0 +1,14 @@
+# Fulfillment Dashboard - minimal runtime requirements
+# Chỉ các thư viện cần cho ứng dụng Streamlit hiện tại
+
+# Core runtime
+streamlit>=1.28,<2
+plotly>=5.17,<6
+pandas>=2.1,<3
+numpy>=1.24
+
+# If bạn cần đọc/ghi Excel, bỏ comment dòng dưới:
+# openpyxl>=3.1
+
+# Env loader
+python-dotenv>=1.0

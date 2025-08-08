@@ -1,0 +1,366 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-23T12:30:28.000Z",
+    "description": "Cấu hình quy tắc nghiệp vụ và metrics cho hệ thống quản lý đơn hàng"
+  },
+  "business_rules": {
+    "confirmation_deadlines": {
+      "description": "Thời hạn xác nhận đơn hàng (tính bằng ngày từ khi đặt hàng)",
+      "high_priority": 1,
+      "medium_priority": 2,
+      "low_priority": 3,
+      "default": 2
+    },
+    "delivery_deadlines": {
+      "description": "Thời hạn giao hàng (tính bằng ngày từ khi xác nhận)",
+      "express_shipping": 2,
+      "standard_shipping": 5,
+      "economy_shipping": 7,
+      "same_day": 1,
+      "next_day": 1,
+      "default": 5
+    },
+    "warning_levels": {
+      "description": "Phân loại mức độ cảnh báo dựa trên số ngày trễ hạn",
+      "normal": {
+        "min_delay_days": 0,
+        "max_delay_days": 0,
+        "color": "#28a745",
+        "priority": "low"
+      },
+      "warning": {
+        "min_delay_days": 1,
+        "max_delay_days": 2,
+        "color": "#ffc107",
+        "priority": "medium"
+      },
+      "critical": {
+        "min_delay_days": 3,
+        "max_delay_days": 999,
+        "color": "#dc3545",
+        "priority": "high"
+      }
+    },
+    "status_flow": {
+      "description": "Luồng trạng thái đơn hàng tiêu chuẩn",
+      "sequence": [
+        "Chờ xác nhận",
+        "Đang xử lý",
+        "Chờ xuất kho",
+        "Đang giao",
+        "Đã giao"
+      ],
+      "cancel_allowed_from": [
+        "Chờ xác nhận",
+        "Đang xử lý"
+      ],
+      "return_allowed_from": [
+        "Đã giao"
+      ]
+    },
+    "priority_rules": {
+      "description": "Quy tắc ưu tiên đơn hàng",
+      "high_priority": {
+        "conditions": [
+          "total_amount >= 1000000",
+          "customer_type == 'VIP'",
+          "shipping_method == 'express'"
+        ],
+        "color": "#dc3545",
+        "processing_time_multiplier": 0.5
+      },
+      "medium_priority": {
+        "conditions": [
+          "total_amount >= 500000",
+          "customer_type == 'Regular'",
+          "region in ['Hà Nội', 'TP.HCM']"
+        ],
+        "color": "#ffc107",
+        "processing_time_multiplier": 1.0
+      },
+      "low_priority": {
+        "conditions": ["default"],
+        "color": "#28a745",
+        "processing_time_multiplier": 1.5
+      }
+    },
+    "region_rules": {
+      "description": "Quy tắc xử lý theo vùng miền",
+      "tier_1": {
+        "regions": ["Hà Nội", "TP.HCM"],
+        "delivery_time_standard": 3,
+        "delivery_time_express": 1,
+        "processing_priority": "high"
+      },
+      "tier_2": {
+        "regions": ["Đà Nẵng", "Hải Phòng", "Cần Thơ"],
+        "delivery_time_standard": 5,
+        "delivery_time_express": 2,
+        "processing_priority": "medium"
+      },
+      "tier_3": {
+        "regions": ["Khác"],
+        "delivery_time_standard": 7,
+        "delivery_time_express": 3,
+        "processing_priority": "low"
+      }
+    }
+  },
+  "kpi_metrics": {
+    "on_time_confirmation": {
+      "name": "Tỷ lệ xác nhận đúng hạn",
+      "description": "Phần trăm đơn hàng được xác nhận trong thời hạn quy định",
+      "unit": "percent",
+      "target": 95,
+      "warning_threshold": 85,
+      "critical_threshold": 75,
+      "calculation": "confirmed_on_time / total_orders * 100",
+      "display_order": 1
+    },
+    "on_time_delivery": {
+      "name": "Tỷ lệ giao hàng đúng hạn",
+      "description": "Phần trăm đơn hàng được giao trong thời hạn cam kết",
+      "unit": "percent",
+      "target": 90,
+      "warning_threshold": 80,
+      "critical_threshold": 70,
+      "calculation": "delivered_on_time / total_delivered * 100",
+      "display_order": 2
+    },
+    "avg_processing_time": {
+      "name": "Thời gian xử lý trung bình",
+      "description": "Số ngày trung bình từ khi đặt hàng đến khi giao hàng",
+      "unit": "days",
+      "target": 3,
+      "warning_threshold": 5,
+      "critical_threshold": 7,
+      "calculation": "sum(processing_days) / count(completed_orders)",
+      "display_order": 3
+    },
+    "cancellation_rate": {
+      "name": "Tỷ lệ hủy đơn",
+      "description": "Phần trăm đơn hàng bị hủy trong tổng số đơn",
+      "unit": "percent",
+      "target": 5,
+      "warning_threshold": 10,
+      "critical_threshold": 15,
+      "calculation": "cancelled_orders / total_orders * 100",
+      "display_order": 4,
+      "invert_good_bad": true
+    },
+    "customer_satisfaction": {
+      "name": "Độ hài lòng khách hàng",
+      "description": "Điểm đánh giá trung bình từ khách hàng",
+      "unit": "score",
+      "target": 4.5,
+      "warning_threshold": 4.0,
+      "critical_threshold": 3.5,
+      "calculation": "sum(customer_ratings) / count(rated_orders)",
+      "display_order": 5
+    },
+    "revenue_per_order": {
+      "name": "Doanh thu trung bình/đơn",
+      "description": "Giá trị đơn hàng trung bình",
+      "unit": "currency",
+      "target": 500000,
+      "warning_threshold": 300000,
+      "critical_threshold": 200000,
+      "calculation": "total_revenue / total_orders",
+      "display_order": 6
+    }
+  },
+  "alert_rules": {
+    "confirmation_overdue": {
+      "name": "Quá hạn xác nhận",
+      "description": "Đơn hàng chờ xác nhận quá thời hạn quy định",
+      "severity": "high",
+      "conditions": [
+        "status == 'Chờ xác nhận'",
+        "days_since_order > confirmation_deadline"
+      ],
+      "notification_channels": ["email", "dashboard"],
+      "auto_actions": ["send_reminder", "escalate_to_manager"]
+    },
+    "delivery_overdue": {
+      "name": "Quá hạn giao hàng",
+      "description": "Đơn hàng vượt quá thời hạn giao hàng cam kết",
+      "severity": "critical",
+      "conditions": [
+        "status in ['Đang xử lý', 'Chờ xuất kho', 'Đang giao']",
+        "days_since_confirmation > delivery_deadline"
+      ],
+      "notification_channels": ["email", "sms", "dashboard"],
+      "auto_actions": ["notify_customer", "create_incident"]
+    },
+    "payment_pending": {
+      "name": "Chờ thanh toán",
+      "description": "Đơn hàng chưa được thanh toán trong thời gian quy định",
+      "severity": "medium",
+      "conditions": [
+        "payment_status == 'Chưa thanh toán'",
+        "days_since_order > 1"
+      ],
+      "notification_channels": ["email", "dashboard"],
+      "auto_actions": ["send_payment_reminder"]
+    },
+    "high_value_order": {
+      "name": "Đơn hàng giá trị cao",
+      "description": "Đơn hàng có giá trị cao cần được ưu tiên xử lý",
+      "severity": "info",
+      "conditions": [
+        "total_amount >= 2000000"
+      ],
+      "notification_channels": ["dashboard"],
+      "auto_actions": ["set_high_priority", "assign_senior_staff"]
+    },
+    "inventory_shortage": {
+      "name": "Thiếu hàng trong kho",
+      "description": "Sản phẩm trong đơn hàng không đủ số lượng trong kho",
+      "severity": "high",
+      "conditions": [
+        "inventory_quantity < order_quantity"
+      ],
+      "notification_channels": ["email", "dashboard"],
+      "auto_actions": ["notify_procurement", "suggest_substitute"]
+    }
+  },
+  "display_config": {
+    "pagination": {
+      "default_page_size": 20,
+      "max_page_size": 100,
+      "page_size_options": [10, 20, 50, 100]
+    },
+    "date_format": {
+      "display": "DD/MM/YYYY",
+      "api": "YYYY-MM-DD",
+      "timezone": "Asia/Ho_Chi_Minh"
+    },
+    "currency": {
+      "code": "VND",
+      "symbol": "₫",
+      "decimal_places": 0,
+      "thousand_separator": ",",
+      "decimal_separator": "."
+    },
+    "status_colors": {
+      "Chờ xác nhận": "#ffc107",
+      "Đang xử lý": "#17a2b8",
+      "Chờ xuất kho": "#fd7e14",
+      "Đang giao": "#007bff",
+      "Đã giao": "#28a745",
+      "Đã hủy": "#dc3545"
+    },
+    "priority_colors": {
+      "Cao": "#dc3545",
+      "Trung bình": "#ffc107",
+      "Thấp": "#28a745"
+    },
+    "chart_colors": {
+      "primary": ["#667eea", "#764ba2", "#f093fb", "#f5576c", "#4facfe", "#00f2fe"],
+      "gradient": {
+        "start": "#667eea",
+        "end": "#764ba2"
+      }
+    }
+  },
+  "automation_rules": {
+    "auto_confirmation": {
+      "enabled": true,
+      "conditions": [
+        "payment_status == 'Đã thanh toán'",
+        "inventory_available == true",
+        "customer_verification == 'Passed'"
+      ],
+      "action": "confirm_order",
+      "delay_minutes": 5
+    },
+    "auto_priority_upgrade": {
+      "enabled": true,
+      "conditions": [
+        "days_waiting > 3",
+        "customer_complaints > 0"
+      ],
+      "action": "upgrade_priority",
+      "notification": true
+    },
+    "auto_escalation": {
+      "enabled": true,
+      "levels": [
+        {
+          "delay_hours": 4,
+          "escalate_to": "team_lead",
+          "conditions": ["priority == 'Cao'"]
+        },
+        {
+          "delay_hours": 8,
+          "escalate_to": "manager",
+          "conditions": ["priority == 'Cao'", "no_response == true"]
+        },
+        {
+          "delay_hours": 24,
+          "escalate_to": "director",
+          "conditions": ["critical_issues > 0"]
+        }
+      ]
+    }
+  },
+  "integration_config": {
+    "data_sources": {
+      "one_tga": {
+        "enabled": true,
+        "url": "https://one.tga.com.vn",
+        "auth_type": "session",
+        "sync_interval_minutes": 15,
+        "retry_attempts": 3
+      },
+      "dashboard_file": {
+        "enabled": true,
+        "file_path": "./orders_data.json",
+        "backup_path": "./backup/",
+        "auto_backup": true
+      },
+      "external_api": {
+        "enabled": false,
+        "url": "https://api.external-system.com",
+        "auth_type": "bearer_token",
+        "sync_interval_minutes": 30
+      }
+    },
+    "export_formats": {
+      "csv": {
+        "enabled": true,
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "include_headers": true
+      },
+      "json": {
+        "enabled": true,
+        "pretty_print": true,
+        "include_metadata": true
+      },
+      "excel": {
+        "enabled": false,
+        "sheet_name": "Orders",
+        "auto_format": true
+      }
+    }
+  },
+  "security_config": {
+    "api_rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100,
+      "burst_limit": 20
+    },
+    "data_retention": {
+      "orders_days": 1095,
+      "logs_days": 30,
+      "backups_days": 90
+    },
+    "access_control": {
+      "require_auth": false,
+      "admin_endpoints": ["/api/config", "/api/admin"],
+      "read_only_endpoints": ["/api/orders", "/api/statistics"]
+    }
+  }
+}

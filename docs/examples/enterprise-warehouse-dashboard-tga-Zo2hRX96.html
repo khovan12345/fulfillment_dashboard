@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Warehouse Dashboard - TGA</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Date-fns -->
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+    <!-- Google Translate -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #16a34a;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --info-color: #0891b2;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark-color);
+        }
+
+        .main-container {
+            background: var(--light-color);
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: var(--gradient-1);
+            min-height: 100vh;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .logo h3 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo small {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            width: 20px;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: var(--light-color);
+        }
+
+        .header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left h1 {
+            color: var(--dark-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-left .breadcrumb {
+            background: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-selector {
+            background: var(--light-color);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .stat-card.success::before { background: var(--gradient-4); }
+        .stat-card.warning::before { background: var(--gradient-2); }
+        .stat-card.info::before { background: var(--gradient-3); }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card.primary .stat-icon { background: var(--gradient-1); }
+        .stat-card.success .stat-icon { background: var(--gradient-4); }
+        .stat-card.warning .stat-icon { background: var(--gradient-2); }
+        .stat-card.info .stat-icon { background: var(--gradient-3); }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .trend-up { color: var(--success-color); }
+        .trend-down { color: var(--danger-color); }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .chart-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover,
+        .control-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .activity-feed {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: white;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .activity-content h6 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-content small {
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+        }
+
+        .controls-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-label {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-success {
+            background: var(--gradient-4);
+            border: none;
+        }
+
+        .btn-warning {
+            background: var(--gradient-2);
+            border: none;
+        }
+
+        .btn-info {
+            background: var(--gradient-3);
+            border: none;
+        }
+
+        .data-table {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .table-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .table-responsive {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .table {
+            margin: 0;
+        }
+
+        .table th {
+            background: #f8fafc;
+            border-top: none;
+            font-weight: 600;
+            color: var(--dark-color);
+            padding: 1rem;
+        }
+
+        .table td {
+            padding: 1rem;
+            vertical-align: middle;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-badge.active {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-badge.pending {
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--warning-color);
+        }
+
+        .status-badge.error {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--danger-color);
+        }
+
+        .notification-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            max-width: 400px;
+        }
+
+        .notification {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .notification.warning {
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--info-color);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .modal-header {
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .config-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .config-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .config-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .config-card h5 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .config-card h5 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                margin: 10px;
+            }
+            
+            .sidebar {
+                min-height: auto;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .google-translate {
+            margin-top: 1rem;
+        }
+
+        #google_translate_element {
+            background: white;
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel"></div>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0 main-container">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-xl-2">
+                <div class="sidebar">
+                    <div class="sidebar-content">
+                        <div class="logo">
+                            <h3><i class="fas fa-warehouse"></i> TGA Enterprise</h3>
+                            <small>Warehouse Management System</small>
+                        </div>
+                        
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#analytics" class="nav-link" data-section="analytics">
+                                    <i class="fas fa-chart-line"></i> Phân tích
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#automation" class="nav-link" data-section="automation">
+                                    <i class="fas fa-robot"></i> Tự động hóa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#notifications" class="nav-link" data-section="notifications">
+                                    <i class="fas fa-bell"></i> Thông báo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#reports" class="nav-link" data-section="reports">
+                                    <i class="fas fa-file-alt"></i> Báo cáo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#integrations" class="nav-link" data-section="integrations">
+                                    <i class="fas fa-plug"></i> Tích hợp
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#settings" class="nav-link" data-section="settings">
+                                    <i class="fas fa-cog"></i> Cài đặt
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="google-translate">
+                            <div id="google_translate_element"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9 col-xl-10">
+                <div class="main-content">
+                    <!-- Header -->
+                    <div class="header">
+                        <div class="header-left">
+                            <h1 id="pageTitle">Dashboard Tổng quan</h1>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active" id="breadcrumbActive">Dashboard</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="header-right">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="text-end">
+                                    <small class="text-muted">Cập nhật lần cuối</small>
+                                    <div class="fw-bold" id="lastUpdate">--:--:--</div>
+                                </div>
+                                <button class="btn btn-primary" onclick="refreshData()">
+                                    <i class="fas fa-sync-alt"></i> Làm mới
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Section -->
+                    <div id="dashboardSection" class="content-section">
+                        <!-- Stats Grid -->
+                        <div class="stats-grid">
+                            <div class="stat-card primary">
+                                <div class="stat-icon">
+                                    <i class="fas fa-boxes"></i>
+                                </div>
+                                <div class="stat-value" id="totalOrders">1,234</div>
+                                <div class="stat-label">Tổng đơn hàng</div>
+                                <div class="stat-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> 12.5% so với tháng trước
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card success">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-value" id="completedOrders">987</div>
+                                <div class="stat-label">Đơn hoàn thành</div>
+                                <div class="stat-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> 8.3% so với tháng trước
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card warning">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-value" id="pendingOrders">45</div>
+                                <div class="stat-label">Đơn chờ xử lý</div>
+                                <div class="stat-trend trend-down">
+                                    <i class="fas fa-arrow-down"></i> 3.2% so với tháng trước
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card info">
+                                <div class="stat-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="stat-value" id="totalRevenue">₫2.5M</div>
+                                <div class="stat-label">Doanh thu tháng</div>
+                                <div class="stat-trend trend-up">
+                                    <i class="fas fa-arrow-up"></i> 15.7% so với tháng trước
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Grid -->
+                        <div class="dashboard-grid">
+                            <!-- Chart Container -->
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">Thống kê đơn hàng</h3>
+                                    <div class="chart-controls">
+                                        <button class="control-btn active" data-period="7">7 ngày</button>
+                                        <button class="control-btn" data-period="30">30 ngày</button>
+                                        <button class="control-btn" data-period="90">90 ngày</button>
+                                    </div>
+                                </div>
+                                <canvas id="ordersChart" width="400" height="200"></canvas>
+                            </div>
+
+                            <!-- Activity Feed -->
+                            <div class="activity-feed">
+                                <h4 class="mb-3">Hoạt động gần đây</h4>
+                                <div id="activityList">
+                                    <div class="activity-item">
+                                        <div class="activity-icon" style="background: var(--gradient-4);">
+                                            <i class="fas fa-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Đơn hàng mới #1234</h6>
+                                            <small>5 phút trước</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon" style="background: var(--gradient-1);">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Đơn hàng #1230 đã giao</h6>
+                                            <small>15 phút trước</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon" style="background: var(--gradient-2);">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h6>Cảnh báo tồn kho thấp</h6>
+                                            <small>30 phút trước</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="data-table">
+                            <div class="table-header">
+                                <h3 class="table-title">Đơn hàng gần đây</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn</th>
+                                            <th>Khách hàng</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Trạng thái</th>
+                                            <th>Giá trị</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ordersTableBody">
+                                        <tr>
+                                            <td>#1234</td>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>Laptop Dell XPS</td>
+                                            <td><span class="badge status-badge active">Hoàn thành</span></td>
+                                            <td>₫25,000,000</td>
+                                            <td>12/01/2024</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary me-1">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-success">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <!-- More rows... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Section -->
+                    <div id="analyticsSection" class="content-section" style="display: none;">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h3 class="chart-title">Phân tích chi tiết</h3>
+                                <div class="chart-controls">
+                                    <select class="form-select" style="width: auto;">
+                                        <option>Theo ngày</option>
+                                        <option>Theo tuần</option>
+                                        <option>Theo tháng</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <canvas id="analyticsChart" width="400" height="300"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Automation Section -->
+                    <div id="automationSection" class="content-section" style="display: none;">
+                        <div class="config-section">
+                            <h3 class="mb-4">Cấu hình tự động hóa</h3>
+                            <div class="config-grid">
+                                <div class="config-card">
+                                    <h5><i class="fas fa-clock"></i> Lịch trình API</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">URL API One.tga.com.vn</label>
+                                        <input type="url" class="form-control" id="apiUrl" placeholder="https://one.tga.com.vn/api/...">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Thời gian lấy dữ liệu</label>
+                                        <select class="form-select" id="apiSchedule">
+                                            <option value="5">Mỗi 5 phút</option>
+                                            <option value="15">Mỗi 15 phút</option>
+                                            <option value="30">Mỗi 30 phút</option>
+                                            <option value="60">Mỗi 1 giờ</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="saveApiConfig()">
+                                        <i class="fas fa-save"></i> Lưu cấu hình
+                                    </button>
+                                </div>
+
+                                <div class="config-card">
+                                    <h5><i class="fas fa-refresh"></i> Reset dữ liệu hàng ngày</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Thời gian reset</label>
+                                        <input type="time" class="form-control" id="resetTime" value="00:00">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Backup trước khi reset</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="backupBeforeReset" checked>
+                                            <label class="form-check-label" for="backupBeforeReset">
+                                                Tự động backup vào Google Drive
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-warning" onclick="saveResetConfig()">
+                                        <i class="fas fa-save"></i> Lưu cấu hình
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Section -->
+                    <div id="notificationsSection" class="content-section" style="display: none;">
+                        <div class="config-section">
+                            <h3 class="mb-4">Cấu hình thông báo</h3>
+                            <div class="config-grid">
+                                <div class="config-card">
+                                    <h5><i class="fab fa-telegram"></i> Telegram</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Bot Token</label>
+                                        <input type="text" class="form-control" id="telegramToken" placeholder="Bot Token từ @BotFather">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Chat ID</label>
+                                        <input type="text" class="form-control" id="telegramChatId" placeholder="Chat ID hoặc Channel ID">
+                                    </div>
+                                    <button class="btn btn-info" onclick="testTelegram()">
+                                        <i class="fas fa-paper-plane"></i> Test thông báo
+                                    </button>
+                                    <button class="btn btn-primary ms-2" onclick="saveTelegramConfig()">
+                                        <i class="fas fa-save"></i> Lưu
+                                    </button>
+                                </div>
+
+                                <div class="config-card">
+                                    <h5><i class="fas fa-envelope"></i> Email</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">SMTP Server</label>
+                                        <input type="text" class="form-control" id="smtpServer" placeholder="smtp.gmail.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Email gửi</label>
+                                        <input type="email" class="form-control" id="senderEmail" placeholder="sender@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">App Password</label>
+                                        <input type="password" class="form-control" id="emailPassword" placeholder="App Password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Email nhận</label>
+                                        <input type="email" class="form-control" id="receiverEmail" placeholder="receiver@example.com">
+                                    </div>
+                                    <button class="btn btn-success" onclick="testEmail()">
+                                        <i class="fas fa-paper-plane"></i> Test email
+                                    </button>
+                                    <button class="btn btn-primary ms-2" onclick="saveEmailConfig()">
+                                        <i class="fas fa-save"></i> Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports Section -->
+                    <div id="reportsSection" class="content-section" style="display: none;">
+                        <div class="config-section">
+                            <h3 class="mb-4">Quản lý báo cáo</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="config-card">
+                                        <h5><i class="fas fa-file-pdf"></i> Tạo báo cáo</h5>
+                                        <div class="mb-3">
+                                            <label class="control-label">Loại báo cáo</label>
+                                            <select class="form-select" id="reportType">
+                                                <option value="daily">Báo cáo hàng ngày</option>
+                                                <option value="weekly">Báo cáo hàng tuần</option>
+                                                <option value="monthly">Báo cáo hàng tháng</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="control-label">Từ ngày</label>
+                                            <input type="date" class="form-control" id="reportStartDate">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="control-label">Đến ngày</label>
+                                            <input type="date" class="form-control" id="reportEndDate">
+                                        </div>
+                                        <button class="btn btn-primary" onclick="generateReport()">
+                                            <i class="fas fa-chart-bar"></i> Tạo báo cáo
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="config-card">
+                                        <h5><i class="fas fa-history"></i> Lịch sử báo cáo</h5>
+                                        <div id="reportHistory">
+                                            <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                                                <span>Báo cáo ngày 20/01/2024</span>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-primary me-1" onclick="downloadReport('daily_20240120')">
+                                                        <i class="fas fa-download"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteReport('daily_20240120')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- More report history items... -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrations Section -->
+                    <div id="integrationsSection" class="content-section" style="display: none;">
+                        <div class="config-section">
+                            <h3 class="mb-4">Tích hợp dịch vụ</h3>
+                            <div class="config-grid">
+                                <div class="config-card">
+                                    <h5><i class="fab fa-google-drive"></i> Google Drive</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Folder ID</label>
+                                        <input type="text" class="form-control" id="driveFolder" placeholder="Google Drive Folder ID">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Service Account Key (JSON)</label>
+                                        <textarea class="form-control" id="driveServiceAccount" rows="4" placeholder="Paste service account JSON key here"></textarea>
+                                    </div>
+                                    <button class="btn btn-success" onclick="testDriveConnection()">
+                                        <i class="fas fa-link"></i> Test kết nối
+                                    </button>
+                                    <button class="btn btn-primary ms-2" onclick="saveDriveConfig()">
+                                        <i class="fas fa-save"></i> Lưu
+                                    </button>
+                                </div>
+
+                                <div class="config-card">
+                                    <h5><i class="fas fa-table"></i> Google Sheets</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Spreadsheet ID</label>
+                                        <input type="text" class="form-control" id="sheetsId" placeholder="Google Sheets ID">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Sheet Name</label>
+                                        <input type="text" class="form-control" id="sheetName" placeholder="Sheet name (e.g., Sheet1)">
+                                    </div>
+                                    <button class="btn btn-success" onclick="testSheetsConnection()">
+                                        <i class="fas fa-link"></i> Test kết nối
+                                    </button>
+                                    <button class="btn btn-primary ms-2" onclick="saveSheetsConfig()">
+                                        <i class="fas fa-save"></i> Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div id="settingsSection" class="content-section" style="display: none;">
+                        <div class="config-section">
+                            <h3 class="mb-4">Cài đặt hệ thống</h3>
+                            <div class="config-grid">
+                                <div class="config-card">
+                                    <h5><i class="fas fa-user"></i> Thông tin người dùng</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Tên người dùng</label>
+                                        <input type="text" class="form-control" id="username" value="Administrator">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Email</label>
+                                        <input type="email" class="form-control" id="userEmail" value="admin@tga.com.vn">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Múi giờ</label>
+                                        <select class="form-select" id="timezone">
+                                            <option value="Asia/Ho_Chi_Minh">Việt Nam (UTC+7)</option>
+                                            <option value="Asia/Bangkok">Thailand (UTC+7)</option>
+                                            <option value="Asia/Singapore">Singapore (UTC+8)</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="saveUserSettings()">
+                                        <i class="fas fa-save"></i> Lưu cài đặt
+                                    </button>
+                                </div>
+
+                                <div class="config-card">
+                                    <h5><i class="fas fa-shield-alt"></i> Bảo mật</h5>
+                                    <div class="mb-3">
+                                        <label class="control-label">Mật khẩu hiện tại</label>
+                                        <input type="password" class="form-control" id="currentPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Mật khẩu mới</label>
+                                        <input type="password" class="form-control" id="newPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Xác nhận mật khẩu</label>
+                                        <input type="password" class="form-control" id="confirmPassword">
+                                    </div>
+                                    <button class="btn btn-warning" onclick="changePassword()">
+                                        <i class="fas fa-key"></i> Đổi mật khẩu
+                                    </button>
+                                </div>
+
+                                <div class="config-card">
+                                    <h5><i class="fas fa-database"></i> Backup & Restore</h5>
+                                    <div class="mb-3">
+                                        <button class="btn btn-success w-100" onclick="backupData()">
+                                            <i class="fas fa-download"></i> Backup dữ liệu
+                                        </button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="control-label">Restore từ file</label>
+                                        <input type="file" class="form-control" id="restoreFile" accept=".json">
+                                    </div>
+                                    <button class="btn btn-warning w-100" onclick="restoreData()">
+                                        <i class="fas fa-upload"></i> Restore dữ liệu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Global variables
+        let ordersChart;
+        let analyticsChart;
+        let currentSection = 'dashboard';
+        let apiScheduleInterval;
+        let resetScheduleInterval;
+
+        // Configuration objects
+        const config = {
+            telegram: {
+                token: '',
+                chatId: ''
+            },
+            email: {
+                smtp: '',
+                sender: '',
+                password: '',
+                receiver: ''
+            },
+            api: {
+                url: '',
+                schedule: 15
+            },
+            drive: {
+                folderId: '',
+                serviceAccount: ''
+            },
+            sheets: {
+                spreadsheetId: '',
+                sheetName: 'Sheet1'
+            },
+            user: {
+                name: 'Administrator',
+                email: 'admin@tga.com.vn',
+                timezone: 'Asia/Ho_Chi_Minh'
+            }
+        };
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+            loadSavedConfig();
+            updateLastUpdateTime();
+            initializeCharts();
+            startPeriodicUpdates();
+        });
+
+        // Google Translate initialization
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'vi',
+                includedLanguages: 'en,vi,zh-CN,ja,ko,th',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+
+        // Navigation
+        function initializeDashboard() {
+            // Navigation event listeners
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    switchSection(section);
+                });
+            });
+
+            // Chart controls
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const period = this.getAttribute('data-period');
+                    updateChart(period);
+                });
+            });
+        }
+
+        function switchSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.style.display = 'none';
+            });
+
+            // Show selected section
+            document.getElementById(section + 'Section').style.display = 'block';
+
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${section}"]`).classList.add('active');
+
+            // Update header
+            updateHeader(section);
+            currentSection = section;
+        }
+
+        function updateHeader(section) {
+            const titles = {
+                dashboard: 'Dashboard Tổng quan',
+                analytics: 'Phân tích chi tiết',
+                automation: 'Tự động hóa',
+                notifications: 'Thông báo',
+                reports: 'Báo cáo',
+                integrations: 'Tích hợp',
+                settings: 'Cài đặt'
+            };
+
+            document.getElementById('pageTitle').textContent = titles[section];
+            document.getElementById('breadcrumbActive').textContent = titles[section];
+        }
+
+        // Charts
+        function initializeCharts() {
+            initializeOrdersChart();
+            initializeAnalyticsChart();
+        }
+
+        function initializeOrdersChart() {
+            const ctx = document.getElementById('ordersChart').getContext('2d');
+            
+            ordersChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+                    datasets: [{
+                        label: 'Đơn hàng',
+                        data: [65, 78, 90, 81, 96, 55, 40],
+                        borderColor: 'rgb(37, 99, 235)',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Hoàn thành',
+                        data: [45, 65, 75, 70, 85, 45, 30],
+                        borderColor: 'rgb(22, 163, 74)',
+                        backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    // maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initializeAnalyticsChart() {
+            const ctx = document.getElementById('analyticsChart').getContext('2d');
+            
+            analyticsChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hoàn thành', 'Đang xử lý', 'Chờ duyệt', 'Hủy'],
+                    datasets: [{
+                        data: [65, 20, 10, 5],
+                        backgroundColor: [
+                            'rgba(22, 163, 74, 0.8)',
+                            'rgba(37, 99, 235, 0.8)',
+                            'rgba(217, 119, 6, 0.8)',
+                            'rgba(220, 38, 38, 0.8)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    // maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(period) {
+            // Simulate data update based on period
+            const data = generateChartData(period);
+            ordersChart.data.labels = data.labels;
+            ordersChart.data.datasets[0].data = data.orders;
+            ordersChart.data.datasets[1].data = data.completed;
+            ordersChart.update();
+        }
+
+        function generateChartData(period) {
+            // Generate sample data based on period
+            const periods = {
+                7: {
+                    labels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+                    orders: [65, 78, 90, 81, 96, 55, 40],
+                    completed: [45, 65, 75, 70, 85, 45, 30]
+                },
+                30: {
+                    labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                    orders: [250, 300, 280, 320],
+                    completed: [200, 250, 220, 280]
+                },
+                90: {
+                    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3'],
+                    orders: [1200, 1350, 1100],
+                    completed: [1000, 1200, 950]
+                }
+            };
+            return periods[period] || periods[7];
+        }
+
+        // API Integration
+        async function callOneAPI() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            if (!apiUrl) {
+                showNotification('warning', 'Vui lòng nhập URL API');
+                return;
+            }
+
+            showLoading(true);
+            try {
+                // Simulate API call
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                // Process and update dashboard with new data
+                updateDashboardData(data);
+                showNotification('success', 'Dữ liệu đã được cập nhật từ API');
+                
+                // Log activity
+                addActivity('API call thành công', 'now');
+                
+                // Save to Google Sheets if configured
+                if (config.sheets.spreadsheetId) {
+                    await saveToSheets(data);
+                }
+                
+            } catch (error) {
+                console.error('API call failed:', error);
+                showNotification('error', 'Lỗi khi gọi API: ' + error.message);
+                addActivity('API call thất bại', 'now');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function startApiSchedule() {
+            const schedule = config.api.schedule;
+            if (apiScheduleInterval) {
+                clearInterval(apiScheduleInterval);
+            }
+            
+            apiScheduleInterval = setInterval(() => {
+                callOneAPI();
+            }, schedule * 60 * 1000); // Convert minutes to milliseconds
+            
+            showNotification('info', `Đã thiết lập lịch lấy API mỗi ${schedule} phút`);
+        }
+
+        // Notifications
+        async function sendTelegramMessage(message) {
+            const { token, chatId } = config.telegram;
+            if (!token || !chatId) {
+                throw new Error('Telegram chưa được cấu hình');
+            }
+
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Gửi Telegram thất bại');
+            }
+
+            return response.json();
+        }
+
+        async function sendEmail(subject, body) {
+            const { smtp, sender, password, receiver } = config.email;
+            if (!smtp || !sender || !password || !receiver) {
+                throw new Error('Email chưa được cấu hình');
+            }
+
+            // Note: In a real implementation, this would need a backend service
+            // For demo purposes, we'll simulate the email sending
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({ success: true });
+                }, 1000);
+            });
+        }
+
+        async function testTelegram() {
+            const token = document.getElementById('telegramToken').value;
+            const chatId = document.getElementById('telegramChatId').value;
+            
+            if (!token || !chatId) {
+                showNotification('warning', 'Vui lòng nhập đầy đủ thông tin Telegram');
+                return;
+            }
+
+            try {
+                config.telegram.token = token;
+                config.telegram.chatId = chatId;
+                
+                await sendTelegramMessage('🔔 Test thông báo từ TGA Enterprise Dashboard');
+                showNotification('success', 'Gửi Telegram thành công!');
+            } catch (error) {
+                showNotification('error', 'Lỗi Telegram: ' + error.message);
+            }
+        }
+
+        async function testEmail() {
+            const smtp = document.getElementById('smtpServer').value;
+            const sender = document.getElementById('senderEmail').value;
+            const password = document.getElementById('emailPassword').value;
+            const receiver = document.getElementById('receiverEmail').value;
+            
+            if (!smtp || !sender || !password || !receiver) {
+                showNotification('warning', 'Vui lòng nhập đầy đủ thông tin Email');
+                return;
+            }
+
+            try {
+                config.email = { smtp, sender, password, receiver };
+                
+                await sendEmail('Test Email', 'Đây là email test từ TGA Enterprise Dashboard');
+                showNotification('success', 'Gửi Email thành công!');
+            } catch (error) {
+                showNotification('error', 'Lỗi Email: ' + error.message);
+            }
+        }
+
+        // Google Services Integration
+        async function uploadToDrive(fileName, content) {
+            // Note: This would require Google Drive API implementation
+            // For demo purposes, we'll simulate the upload
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({ fileId: 'demo_file_id', fileName });
+                }, 1000);
+            });
+        }
+
+        async function saveToSheets(data) {
+            // Note: This would require Google Sheets API implementation
+            // For demo purposes, we'll simulate the save
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({ success: true });
+                }, 1000);
+            });
+        }
+
+        async function testDriveConnection() {
+            const folderId = document.getElementById('driveFolder').value;
+            const serviceAccount = document.getElementById('driveServiceAccount').value;
+            
+            if (!folderId || !serviceAccount) {
+                showNotification('warning', 'Vui lòng nhập đầy đủ thông tin Google Drive');
+                return;
+            }
+
+            try {
+                config.drive.folderId = folderId;
+                config.drive.serviceAccount = serviceAccount;
+                
+                // Simulate connection test
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                showNotification('success', 'Kết nối Google Drive thành công!');
+            } catch (error) {
+                showNotification('error', 'Lỗi Google Drive: ' + error.message);
+            }
+        }
+
+        async function testSheetsConnection() {
+            const spreadsheetId = document.getElementById('sheetsId').value;
+            const sheetName = document.getElementById('sheetName').value;
+            
+            if (!spreadsheetId || !sheetName) {
+                showNotification('warning', 'Vui lòng nhập đầy đủ thông tin Google Sheets');
+                return;
+            }
+
+            try {
+                config.sheets.spreadsheetId = spreadsheetId;
+                config.sheets.sheetName = sheetName;
+                
+                // Simulate connection test
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                showNotification('success', 'Kết nối Google Sheets thành công!');
+            } catch (error) {
+                showNotification('error', 'Lỗi Google Sheets: ' + error.message);
+            }
+        }
+
+        // Report Generation
+        async function generateReport() {
+            const reportType = document.getElementById('reportType').value;
+            const startDate = document.getElementById('reportStartDate').value;
+            const endDate = document.getElementById('reportEndDate').value;
+            
+            if (!startDate || !endDate) {
+                showNotification('warning', 'Vui lòng chọn khoảng thời gian');
+                return;
+            }
+
+            showLoading(true);
+            try {
+                // Simulate report generation
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                const reportData = {
+                    type: reportType,
+                    startDate,
+                    endDate,
+                    generated: new Date().toISOString(),
+                    data: {
+                        totalOrders: 1234,
+                        completedOrders: 987,
+                        pendingOrders: 45,
+                        revenue: 2500000
+                    }
+                };
+
+                // Save to Google Drive
+                if (config.drive.folderId) {
+                    const fileName = `report_${reportType}_${startDate}_${endDate}.json`;
+                    await uploadToDrive(fileName, JSON.stringify(reportData));
+                }
+
+                // Send notifications
+                if (config.telegram.token) {
+                    await sendTelegramMessage(`📊 Báo cáo ${reportType} đã được tạo\nThời gian: ${startDate} - ${endDate}`);
+                }
+
+                if (config.email.sender) {
+                    await sendEmail('Báo cáo mới', `Báo cáo ${reportType} từ ${startDate} đến ${endDate} đã được tạo`);
+                }
+
+                showNotification('success', 'Báo cáo đã được tạo và lưu trữ thành công!');
+                addActivity('Tạo báo cáo thành công', 'now');
+                
+            } catch (error) {
+                showNotification('error', 'Lỗi tạo báo cáo: ' + error.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Daily Reset
+        function scheduleDeliveDataReset() {
+            const resetTime = document.getElementById('resetTime').value;
+            const backup = document.getElementById('backupBeforeReset').checked;
+            
+            if (!resetTime) {
+                showNotification('warning', 'Vui lòng chọn thời gian reset');
+                return;
+            }
+
+            // Calculate next reset time
+            const now = new Date();
+            const [hours, minutes] = resetTime.split(':');
+            const resetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+            
+            if (resetDate <= now) {
+                resetDate.setDate(resetDate.getDate() + 1);
+            }
+
+            const timeUntilReset = resetDate.getTime() - now.getTime();
+            
+            if (resetScheduleInterval) {
+                clearTimeout(resetScheduleInterval);
+            }
+
+            resetScheduleInterval = setTimeout(async () => {
+                if (backup) {
+                    await backupData();
+                }
+                await resetDailyData();
+                scheduleDeliveDataReset(); // Schedule next day
+            }, timeUntilReset);
+
+            showNotification('info', `Reset hàng ngày đã được lên lịch lúc ${resetTime}`);
+        }
+
+        async function resetDailyData() {
+            try {
+                // Reset stats
+                document.getElementById('totalOrders').textContent = '0';
+                document.getElementById('completedOrders').textContent = '0';
+                document.getElementById('pendingOrders').textContent = '0';
+                document.getElementById('totalRevenue').textContent = '₫0';
+                
+                // Clear activity list
+                document.getElementById('activityList').innerHTML = '';
+                
+                // Send notification
+                if (config.telegram.token) {
+                    await sendTelegramMessage('🔄 Dữ liệu hàng ngày đã được reset');
+                }
+                
+                addActivity('Reset dữ liệu hàng ngày', 'now');
+                showNotification('info', 'Dữ liệu hàng ngày đã được reset');
+                
+            } catch (error) {
+                showNotification('error', 'Lỗi reset dữ liệu: ' + error.message);
+            }
+        }
+
+        // Configuration Management
+        function saveTelegramConfig() {
+            config.telegram.token = document.getElementById('telegramToken').value;
+            config.telegram.chatId = document.getElementById('telegramChatId').value;
+            saveConfig();
+            showNotification('success', 'Cấu hình Telegram đã được lưu');
+        }
+
+        function saveEmailConfig() {
+            config.email.smtp = document.getElementById('smtpServer').value;
+            config.email.sender = document.getElementById('senderEmail').value;
+            config.email.password = document.getElementById('emailPassword').value;
+            config.email.receiver = document.getElementById('receiverEmail').value;
+            saveConfig();
+            showNotification('success', 'Cấu hình Email đã được lưu');
+        }
+
+        function saveApiConfig() {
+            config.api.url = document.getElementById('apiUrl').value;
+            config.api.schedule = parseInt(document.getElementById('apiSchedule').value);
+            saveConfig();
+            
+            if (config.api.url) {
+                startApiSchedule();
+            }
+            
+            showNotification('success', 'Cấu hình API đã được lưu');
+        }
+
+        function saveResetConfig() {
+            scheduleDeliveDataReset();
+            saveConfig();
+            showNotification('success', 'Cấu hình Reset đã được lưu');
+        }
+
+        function saveDriveConfig() {
+            config.drive.folderId = document.getElementById('driveFolder').value;
+            config.drive.serviceAccount = document.getElementById('driveServiceAccount').value;
+            saveConfig();
+            showNotification('success', 'Cấu hình Google Drive đã được lưu');
+        }
+
+        function saveSheetsConfig() {
+            config.sheets.spreadsheetId = document.getElementById('sheetsId').value;
+            config.sheets.sheetName = document.getElementById('sheetName').value;
+            saveConfig();
+            showNotification('success', 'Cấu hình Google Sheets đã được lưu');
+        }
+
+        function saveUserSettings() {
+            config.user.name = document.getElementById('username').value;
+            config.user.email = document.getElementById('userEmail').value;
+            config.user.timezone = document.getElementById('timezone').value;
+            saveConfig();
+            showNotification('success', 'Cài đặt người dùng đã được lưu');
+        }
+
+        function saveConfig() {
+            localStorage.setItem('tga_dashboard_config', JSON.stringify(config));
+        }
+
+        function loadSavedConfig() {
+            const saved = localStorage.getItem('tga_dashboard_config');
+            if (saved) {
+                const savedConfig = JSON.parse(saved);
+                Object.assign(config, savedConfig);
+                
+                // Load values into form fields
+                document.getElementById('telegramToken').value = config.telegram.token || '';
+                document.getElementById('telegramChatId').value = config.telegram.chatId || '';
+                document.getElementById('smtpServer').value = config.email.smtp || '';
+                document.getElementById('senderEmail').value = config.email.sender || '';
+                document.getElementById('emailPassword').value = config.email.password || '';
+                document.getElementById('receiverEmail').value = config.email.receiver || '';
+                document.getElementById('apiUrl').value = config.api.url || '';
+                document.getElementById('apiSchedule').value = config.api.schedule || 15;
+                document.getElementById('driveFolder').value = config.drive.folderId || '';
+                document.getElementById('driveServiceAccount').value = config.drive.serviceAccount || '';
+                document.getElementById('sheetsId').value = config.sheets.spreadsheetId || '';
+                document.getElementById('sheetName').value = config.sheets.sheetName || '';
+                document.getElementById('username').value = config.user.name || '';
+                document.getElementById('userEmail').value = config.user.email || '';
+                document.getElementById('timezone').value = config.user.timezone || '';
+                
+                // Start scheduled tasks if configured
+                if (config.api.url && config.api.schedule) {
+                    startApiSchedule();
+                }
+            }
+        }
+
+        // Backup & Restore
+        async function backupData() {
+            try {
+                const backupData = {
+                    config,
+                    timestamp: new Date().toISOString(),
+                    version: '1.0.0'
+                };
+
+                const fileName = `backup_${new Date().toISOString().split('T')[0]}.json`;
+                const content = JSON.stringify(backupData, null, 2);
+
+                // Save to Google Drive if configured
+                if (config.drive.folderId) {
+                    await uploadToDrive(fileName, content);
+                }
+
+                // Download locally
+                const blob = new Blob([content], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                a.click();
+                URL.revokeObjectURL(url);
+
+                showNotification('success', 'Backup dữ liệu thành công');
+                addActivity('Backup dữ liệu', 'now');
+
+            } catch (error) {
+                showNotification('error', 'Lỗi backup: ' + error.message);
+            }
+        }
+
+        function restoreData() {
+            const file = document.getElementById('restoreFile').files[0];
+            if (!file) {
+                showNotification('warning', 'Vui lòng chọn file backup');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const backupData = JSON.parse(e.target.result);
+                    
+                    if (backupData.config) {
+                        Object.assign(config, backupData.config);
+                        saveConfig();
+                        loadSavedConfig();
+                        showNotification('success', 'Restore dữ liệu thành công');
+                        addActivity('Restore dữ liệu', 'now');
+                    } else {
+                        throw new Error('File backup không hợp lệ');
+                    }
+                } catch (error) {
+                    showNotification('error', 'Lỗi restore: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Utility Functions
+        function showNotification(type, message) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-${getNotificationIcon(type)} me-2"></i>
+                    <span>${message}</span>
+                    <button class="btn-close btn-close-sm ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                </div>
+            `;
+            
+            document.getElementById('notificationPanel').appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        function getNotificationIcon(type) {
+            const icons = {
+                success: 'check-circle',
+                error: 'exclamation-circle',
+                warning: 'exclamation-triangle',
+                info: 'info-circle'
+            };
+            return icons[type] || 'info-circle';
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+
+        function addActivity(message, time) {
+            const activityList = document.getElementById('activityList');
+            const activityItem = document.createElement('div');
+            activityItem.className = 'activity-item';
+            activityItem.innerHTML = `
+                <div class="activity-icon" style="background: var(--gradient-4);">
+                    <i class="fas fa-info"></i>
+                </div>
+                <div class="activity-content">
+                    <h6>${message}</h6>
+                    <small>${time === 'now' ? 'Vừa xong' : time}</small>
+                </div>
+            `;
+            activityList.insertBefore(activityItem, activityList.firstChild);
+            
+            // Keep only last 10 activities
+            if (activityList.children.length > 10) {
+                activityList.removeChild(activityList.lastChild);
+            }
+        }
+
+        function updateLastUpdateTime() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = now.toLocaleTimeString('vi-VN');
+        }
+
+        function refreshData() {
+            showLoading(true);
+            updateLastUpdateTime();
+            
+            // Simulate data refresh
+            setTimeout(() => {
+                // Update stats with random values
+                const stats = {
+                    totalOrders: Math.floor(Math.random() * 1000) + 1000,
+                    completedOrders: Math.floor(Math.random() * 800) + 800,
+                    pendingOrders: Math.floor(Math.random() * 50) + 10,
+                    totalRevenue: (Math.random() * 2 + 2).toFixed(1) + 'M'
+                };
+                
+                Object.keys(stats).forEach(key => {
+                    document.getElementById(key).textContent = key === 'totalRevenue' ? '₫' + stats[key] : stats[key];
+                });
+                
+                addActivity('Làm mới dữ liệu', 'now');
+                showNotification('success', 'Dữ liệu đã được cập nhật');
+                showLoading(false);
+            }, 1000);
+        }
+
+        function updateDashboardData(data) {
+            // Update dashboard with new data from API
+            if (data.orders) {
+                document.getElementById('totalOrders').textContent = data.orders.total || '0';
+                document.getElementById('completedOrders').textContent = data.orders.completed || '0';
+                document.getElementById('pendingOrders').textContent = data.orders.pending || '0';
+            }
+            
+            if (data.revenue) {
+                document.getElementById('totalRevenue').textContent = '₫' + (data.revenue || '0');
+            }
+            
+            updateLastUpdateTime();
+        }
+
+        function startPeriodicUpdates() {
+            // Update time every minute
+            setInterval(updateLastUpdateTime, 60000);
+            
+            // Refresh data every 5 minutes
+            setInterval(refreshData, 300000);
+        }
+
+        // Dummy functions for reports
+        function downloadReport(reportId) {
+            showNotification('info', `Đang tải báo cáo ${reportId}...`);
+            // Simulate download
+            setTimeout(() => {
+                showNotification('success', 'Tải báo cáo thành công');
+            }, 1000);
+        }
+
+        function deleteReport(reportId) {
+            if (confirm('Bạn có chắc muốn xóa báo cáo này?')) {
+                showNotification('success', `Đã xóa báo cáo ${reportId}`);
+                // Remove from UI
+                event.target.closest('.d-flex').remove();
+            }
+        }
+
+        function changePassword() {
+            const current = document.getElementById('currentPassword').value;
+            const newPass = document.getElementById('newPassword').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            
+            if (!current || !newPass || !confirm) {
+                showNotification('warning', 'Vui lòng điền đầy đủ thông tin');
+                return;
+            }
+            
+            if (newPass !== confirm) {
+                showNotification('error', 'Xác nhận mật khẩu không khớp');
+                return;
+            }
+            
+            if (newPass.length < 6) {
+                showNotification('error', 'Mật khẩu phải có ít nhất 6 ký tự');
+                return;
+            }
+            
+            // Simulate password change
+            setTimeout(() => {
+                showNotification('success', 'Đổi mật khẩu thành công');
+                document.getElementById('currentPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+            }, 1000);
+        }
+
+        // Set default dates for report generation
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+            
+            document.getElementById('reportStartDate').value = lastWeek.toISOString().split('T')[0];
+            document.getElementById('reportEndDate').value = today.toISOString().split('T')[0];
+        });
+    </script>
+
+      <script>
+        const createFloatingBall = ()=>{let a=document.createElement("style");a.textContent=`
+          .fellou-floating-ball {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background: #fff;
+              border-radius: 50%;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              display: flex;
+              gap: 8px;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: all 0.15s ease;
+              z-index: 100000;
+              width: 28px;
+              height: 28px;
+              text-align: center;
+              border: 2px solid #f4f4f4;
+          }
+
+          .fellou-floating-ball:hover {
+              width: 140px;
+              border-radius: 99px;
+          }
+
+          .fellou-floating-ball svg {
+              width: 16px;
+              height: 16px;
+          }
+
+          .fellou-floating-ball-text {
+              display: none;
+              width: 0px;
+              transition: width 0.3s ease;
+              color: #595561;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 20px;
+              white-space: nowrap;
+              overflow: hidden;
+           
+          }
+
+          .fellou-floating-ball:hover .fellou-floating-ball-text {
+              display: block;
+              width: 100px;
+          }
+      `,document.head.appendChild(a);let b=document.createElement("div");b.className="fellou-floating-ball",b.addEventListener("click",()=>{window.open("https://fellou.ai","_blank")}),b.innerHTML=`
+          <svg width="16" height="16" viewBox="0 0 152 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.72" d="M108.71 15.909C133.671 36.8541 134.337 77.1554 110.197 105.924C86.0565 134.694 46.2518 141.036 21.2904 120.091C-3.67096 99.1459 -4.33674 58.8446 19.8034 30.0755C43.9435 1.30644 83.7482 -5.03614 108.71 15.909ZM102.282 23.5694C81.8118 6.39315 48.2407 11.7425 27.4638 36.5034C6.68694 61.2643 7.24845 95.2543 27.7183 112.431C48.1882 129.607 81.7593 124.258 102.536 99.4966C123.313 74.7357 122.752 40.7457 102.282 23.5694Z" fill="url(#paint0_linear_34_1408)"/>
+              <path d="M116.986 29.3811C141.525 49.9712 143.286 88.2698 120.921 114.924C98.5561 141.577 60.5333 146.493 35.995 125.903C11.4567 105.313 9.69493 67.0139 32.06 40.3602C54.4252 13.7065 92.4479 8.79095 116.986 29.3811ZM110.558 37.0415C90.3987 20.1255 58.6488 24.2301 39.7205 46.788C20.7921 69.346 22.2632 101.326 42.4229 118.242C62.5825 135.158 94.3324 131.054 113.261 108.496C132.189 85.9377 130.718 53.9574 110.558 37.0415Z" fill="url(#paint1_linear_34_1408)"/>
+              <path d="M131.544 35.0694C155.71 55.3471 155.731 95.1074 131.591 123.876C107.451 152.646 68.291 159.529 44.1249 139.251C19.9589 118.974 19.9379 79.2135 44.078 50.4444C68.2182 21.6753 107.378 14.7917 131.544 35.0694ZM125.116 42.7299C105.505 26.2745 72.5526 32.067 51.7385 56.8723C30.9244 81.6776 30.9421 115.136 50.5528 131.591C70.1636 148.046 103.116 142.254 123.931 117.449C144.745 92.6433 144.727 59.1852 125.116 42.7299Z" fill="url(#paint2_linear_34_1408)"/>
+              <defs>
+                  <linearGradient id="paint0_linear_34_1408" x1="108.71" y1="15.909" x2="21.2904" y2="120.091" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8" stop-opacity="0.7"/>
+                      <stop offset="0.465" stop-color="#FF9000" stop-opacity="0.42"/>
+                      <stop offset="1" stop-color="#33B3FF" stop-opacity="0.2"/>
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_34_1408" x1="116.986" y1="29.381" x2="35.995" y2="125.903" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8" stop-opacity="0.7"/>
+                      <stop offset="0.465" stop-color="#FF9000" stop-opacity="0.42"/>
+                      <stop offset="1" stop-color="#33B3FF" stop-opacity="0.2"/>
+                  </linearGradient>
+                  <linearGradient id="paint2_linear_34_1408" x1="131.544" y1="35.0694" x2="44.1249" y2="139.251" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#6401F8"/>
+                      <stop offset="0.5" stop-color="#FF9000"/>
+                      <stop offset="1" stop-color="#33B3FF"/>
+                  </linearGradient>
+              </defs>
+          </svg>
+      `;let c=document.createElement("div");c.className="fellou-floating-ball-text",c.textContent="powered by fellou",b.appendChild(c),document.body.appendChild(b)};
+        // Call createFloatingBall when the page loads
+        window.addEventListener('load', createFloatingBall);
+      </script>
+    </body>
+</html>

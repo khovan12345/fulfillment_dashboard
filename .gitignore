@@ -1,0 +1,21 @@
+# Virtual environments
+venv/
+path/to/venv/
+
+# Environment files
+*.env
+
+# Secrets
+config/service_account.json
+config/backups/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+

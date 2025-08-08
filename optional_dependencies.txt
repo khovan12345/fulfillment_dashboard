@@ -1,0 +1,48 @@
+# ===================================
+# OPTIONAL DEPENDENCIES - Install if needed
+# Các thư viện tùy chọn - Cài đặt khi cần thiết
+# ===================================
+
+# === ADVANCED VISUALIZATION ===
+bokeh>=3.0.0                         # Advanced interactive visualization
+altair>=5.0.0                        # Statistical visualization grammar
+
+# === EMAIL & COMMUNICATION ===
+yagmail>=0.15.0                      # Easy email sending
+twilio>=8.0.0                        # SMS/WhatsApp notifications
+
+# === ADVANCED DATA PROCESSING ===
+dask>=2023.0.0                       # Parallel computing
+polars>=0.19.0                       # Fast DataFrame library
+pyarrow>=10.0.0                      # Apache Arrow for fast data processing
+
+# === ADVANCED DATABASE ===
+pymongo>=4.0.0                       # MongoDB driver
+psycopg2-binary>=2.9.0              # PostgreSQL driver
+mysql-connector-python>=8.0.0        # MySQL driver
+
+# === ADVANCED SECURITY ===
+bcrypt>=4.0.0                        # Password hashing
+PyJWT>=2.8.0                         # JSON Web Tokens
+passlib>=1.7.0                       # Password hashing utilities
+
+# === ADVANCED SCHEDULING ===
+celery>=5.3.0                        # Distributed task queue
+apscheduler>=3.10.0                  # Advanced Python scheduler
+
+# === ADVANCED MONITORING ===
+prometheus-client>=0.17.0            # Prometheus monitoring
+grafana-api>=1.0.0                   # Grafana integration
+
+# === CLOUD SERVICES ===
+boto3>=1.28.0                        # AWS SDK
+azure-storage-blob>=12.17.0          # Azure Blob Storage
+google-cloud-storage>=2.10.0         # Google Cloud Storage
+
+# === ADVANCED TESTING ===
+locust>=2.16.0                       # Load testing
+hypothesis>=6.82.0                   # Property-based testing
+
+# === ADVANCED WEB SCRAPING ===
+scrapy>=2.10.0                       # Web scraping framework
+playwright>=1.36.0                   # Browser automation

@@ -1,0 +1,583 @@
+order_id,order_date,status,region,order_value,confirm_hours,delivery_hours,is_confirmed_ontime,is_delivered_ontime,customer_type,product_category
+ORD_000001,2025-06-06 09:01:36,confirmed,TP.HCM,959791,12,15,True,True,New,Sports
+ORD_000002,2025-05-19 09:01:36,pending,TP.HCM,4339227,1,15,True,True,New,Electronics
+ORD_000003,2025-06-03 09:01:36,delivered,TP.HCM,3868238,11,18,True,True,New,Home
+ORD_000004,2025-06-11 09:01:36,confirmed,Đà Nẵng,1404256,3,17,True,True,VIP,Home
+ORD_000005,2025-05-20 09:01:36,confirmed,Hải Phòng,2318961,2,17,True,True,VIP,Books
+ORD_000006,2025-06-03 09:01:36,confirmed,Khác,3133614,7,16,True,True,New,Fashion
+ORD_000007,2025-06-08 09:01:36,confirmed,Hà Nội,2052791,11,16,True,True,VIP,Books
+ORD_000008,2025-05-25 09:01:36,cancelled,TP.HCM,2339572,6,17,True,True,New,Electronics
+ORD_000009,2025-06-05 09:01:36,delivered,Cần Thơ,3283102,9,14,True,True,Regular,Sports
+ORD_000010,2025-05-24 09:01:36,delivered,Đà Nẵng,3465214,1,12,True,True,Regular,Electronics
+ORD_000011,2025-05-23 09:01:36,confirmed,TP.HCM,4287855,10,45,True,False,Regular,Books
+ORD_000012,2025-05-21 09:01:36,pending,Đà Nẵng,3693963,4,20,True,True,New,Books
+ORD_000013,2025-05-28 09:01:36,delivered,Hà Nội,1019803,3,13,True,True,VIP,Fashion
+ORD_000014,2025-06-11 09:01:36,confirmed,Hải Phòng,4026287,10,18,True,True,New,Home
+ORD_000015,2025-06-03 09:01:36,confirmed,Khác,4604433,1,13,True,True,Regular,Home
+ORD_000016,2025-05-20 09:01:36,confirmed,Khác,2309467,3,23,True,True,New,Fashion
+ORD_000017,2025-06-02 09:01:36,confirmed,Hải Phòng,1768587,11,22,True,True,VIP,Home
+ORD_000018,2025-06-10 09:01:36,confirmed,Đà Nẵng,4198721,9,63,True,False,VIP,Electronics
+ORD_000019,2025-06-15 09:01:36,confirmed,Hải Phòng,760662,5,15,True,True,VIP,Books
+ORD_000020,2025-06-12 09:01:36,confirmed,Khác,4086957,9,14,True,True,New,Fashion
+ORD_000021,2025-05-25 09:01:36,delivered,Hải Phòng,1787377,10,15,True,True,New,Home
+ORD_000022,2025-05-29 09:01:36,confirmed,Cần Thơ,1115056,36,20,False,True,VIP,Fashion
+ORD_000023,2025-05-19 09:01:36,confirmed,TP.HCM,160321,10,21,True,True,VIP,Electronics
+ORD_000024,2025-05-24 09:01:36,confirmed,Hải Phòng,2096527,1,29,True,False,Regular,Books
+ORD_000025,2025-05-23 09:01:36,confirmed,Hải Phòng,4065051,12,61,True,False,VIP,Books
+ORD_000026,2025-06-11 09:01:36,delivered,Đà Nẵng,3653235,2,18,True,True,Regular,Books
+ORD_000027,2025-06-13 09:01:36,confirmed,Hà Nội,608455,11,22,True,True,Regular,Home
+ORD_000028,2025-06-11 09:01:36,confirmed,Cần Thơ,1275934,4,20,True,True,Regular,Fashion
+ORD_000029,2025-05-25 09:01:36,confirmed,Hà Nội,524365,2,20,True,True,New,Sports
+ORD_000030,2025-06-12 09:01:36,confirmed,TP.HCM,3509248,2,40,True,False,Regular,Books
+ORD_000031,2025-05-23 09:01:36,delivered,Cần Thơ,2324684,1,12,True,True,Regular,Home
+ORD_000032,2025-05-30 09:01:36,confirmed,Khác,4182495,12,60,True,False,VIP,Fashion
+ORD_000033,2025-05-26 09:01:36,confirmed,Hà Nội,2730707,1,20,True,True,VIP,Electronics
+ORD_000034,2025-06-04 09:01:36,pending,Hà Nội,1658812,9,20,True,True,VIP,Sports
+ORD_000035,2025-05-19 09:01:36,pending,TP.HCM,4956325,4,21,True,True,New,Electronics
+ORD_000036,2025-06-05 09:01:36,delivered,Đà Nẵng,2287461,11,20,True,True,VIP,Home
+ORD_000037,2025-05-24 09:01:36,confirmed,Cần Thơ,2752286,3,16,True,True,VIP,Electronics
+ORD_000038,2025-05-31 09:01:36,confirmed,Hải Phòng,1888067,10,29,True,False,New,Home
+ORD_000039,2025-05-21 09:01:36,delivered,Đà Nẵng,1423276,17,48,False,False,Regular,Sports
+ORD_000040,2025-06-08 09:01:36,confirmed,Hải Phòng,2611370,11,22,True,True,New,Electronics
+ORD_000041,2025-06-16 09:01:36,confirmed,Khác,4740776,5,13,True,True,VIP,Home
+ORD_000042,2025-05-26 09:01:36,confirmed,Khác,2314457,12,22,True,True,New,Books
+ORD_000043,2025-05-25 09:01:36,confirmed,Đà Nẵng,469826,1,18,True,True,VIP,Home
+ORD_000044,2025-06-10 09:01:36,pending,Hải Phòng,3687697,5,19,True,True,New,Electronics
+ORD_000045,2025-05-20 09:01:36,confirmed,Hà Nội,3197208,12,59,True,False,New,Sports
+ORD_000046,2025-05-21 09:01:36,delivered,Hà Nội,3101521,1,24,True,True,VIP,Fashion
+ORD_000047,2025-06-07 09:01:36,confirmed,Hải Phòng,1396487,9,51,True,False,VIP,Fashion
+ORD_000048,2025-06-11 09:01:36,confirmed,Đà Nẵng,3553700,7,23,True,True,New,Fashion
+ORD_000049,2025-05-25 09:01:36,confirmed,Cần Thơ,1965909,12,12,True,True,VIP,Books
+ORD_000050,2025-05-28 09:01:36,confirmed,TP.HCM,3442574,4,22,True,True,Regular,Home
+ORD_000051,2025-06-13 09:01:36,pending,Cần Thơ,4598103,5,20,True,True,Regular,Electronics
+ORD_000052,2025-05-20 09:01:36,delivered,Hà Nội,1009346,5,16,True,True,New,Books
+ORD_000053,2025-05-28 09:01:36,pending,Hà Nội,3331253,6,20,True,True,New,Fashion
+ORD_000054,2025-05-25 09:01:36,cancelled,Hải Phòng,1752850,7,24,True,True,Regular,Books
+ORD_000055,2025-05-19 09:01:36,confirmed,Hà Nội,2619285,34,22,False,True,New,Home
+ORD_000056,2025-06-07 09:01:36,pending,TP.HCM,1709271,7,20,True,True,Regular,Books
+ORD_000057,2025-06-07 09:01:36,confirmed,Cần Thơ,4696430,3,16,True,True,VIP,Home
+ORD_000058,2025-05-26 09:01:36,confirmed,Cần Thơ,3805969,10,17,True,True,Regular,Fashion
+ORD_000059,2025-06-02 09:01:36,confirmed,Đà Nẵng,4423924,12,13,True,True,New,Sports
+ORD_000060,2025-05-27 09:01:36,confirmed,TP.HCM,1336094,4,15,True,True,VIP,Electronics
+ORD_000061,2025-05-24 09:01:36,confirmed,Hải Phòng,1731040,17,22,False,True,New,Books
+ORD_000062,2025-06-01 09:01:36,confirmed,Hà Nội,3666384,3,12,True,True,VIP,Fashion
+ORD_000063,2025-06-11 09:01:36,delivered,TP.HCM,1118029,46,20,False,True,Regular,Fashion
+ORD_000064,2025-06-11 09:01:36,confirmed,Đà Nẵng,3812574,9,63,True,False,New,Sports
+ORD_000065,2025-05-30 09:01:36,confirmed,Khác,4081857,9,14,True,True,Regular,Home
+ORD_000066,2025-06-10 09:01:36,confirmed,Hải Phòng,4165094,11,24,True,True,New,Fashion
+ORD_000067,2025-05-25 09:01:36,confirmed,Đà Nẵng,2781918,12,16,True,True,New,Electronics
+ORD_000068,2025-05-21 09:01:36,delivered,TP.HCM,638790,7,23,True,True,Regular,Books
+ORD_000069,2025-05-27 09:01:36,confirmed,Cần Thơ,4999613,7,18,True,True,New,Electronics
+ORD_000070,2025-06-13 09:01:36,pending,Đà Nẵng,2604944,10,12,True,True,Regular,Books
+ORD_000071,2025-06-03 09:01:36,delivered,Cần Thơ,1940642,9,15,True,True,Regular,Books
+ORD_000072,2025-06-01 09:01:36,confirmed,Cần Thơ,1484495,6,24,True,True,Regular,Fashion
+ORD_000073,2025-06-05 09:01:36,confirmed,Hà Nội,804202,7,22,True,True,New,Books
+ORD_000074,2025-05-21 09:01:36,delivered,Đà Nẵng,1875535,3,18,True,True,Regular,Home
+ORD_000075,2025-05-27 09:01:36,delivered,Đà Nẵng,787079,7,18,True,True,Regular,Electronics
+ORD_000076,2025-06-09 09:01:36,delivered,Khác,437709,6,13,True,True,VIP,Fashion
+ORD_000077,2025-05-23 09:01:36,delivered,Cần Thơ,1059568,10,14,True,True,New,Fashion
+ORD_000078,2025-05-31 09:01:36,confirmed,Khác,1060771,6,21,True,True,VIP,Home
+ORD_000079,2025-05-20 09:01:36,confirmed,Cần Thơ,1763710,5,18,True,True,VIP,Sports
+ORD_000080,2025-06-08 09:01:36,confirmed,Đà Nẵng,1115483,4,24,True,True,New,Electronics
+ORD_000081,2025-05-28 09:01:36,cancelled,Khác,2962454,11,20,True,True,VIP,Books
+ORD_000082,2025-06-12 09:01:36,delivered,Cần Thơ,1383382,7,65,True,False,Regular,Fashion
+ORD_000083,2025-06-09 09:01:36,confirmed,Hải Phòng,4155871,11,24,True,True,Regular,Books
+ORD_000084,2025-06-12 09:01:36,confirmed,Hà Nội,2439819,5,15,True,True,Regular,Fashion
+ORD_000085,2025-06-10 09:01:36,confirmed,Hà Nội,4246543,10,17,True,True,Regular,Fashion
+ORD_000086,2025-06-01 09:01:36,confirmed,Khác,2417508,5,21,True,True,New,Electronics
+ORD_000087,2025-06-02 09:01:36,delivered,Cần Thơ,4757155,18,18,False,True,VIP,Books
+ORD_000088,2025-06-06 09:01:36,delivered,Đà Nẵng,1958885,8,13,True,True,Regular,Fashion
+ORD_000089,2025-05-26 09:01:36,cancelled,Đà Nẵng,3669384,6,20,True,True,New,Sports
+ORD_000090,2025-05-27 09:01:36,confirmed,TP.HCM,1112134,8,16,True,True,New,Fashion
+ORD_000091,2025-05-27 09:01:36,confirmed,TP.HCM,1706762,9,69,True,False,VIP,Books
+ORD_000092,2025-05-25 09:01:36,delivered,TP.HCM,2585095,9,13,True,True,VIP,Home
+ORD_000093,2025-05-22 09:01:36,delivered,Hà Nội,557397,12,16,True,True,New,Home
+ORD_000094,2025-06-08 09:01:36,confirmed,Hải Phòng,2485211,44,12,False,True,Regular,Books
+ORD_000095,2025-05-31 09:01:36,delivered,Hà Nội,648140,1,19,True,True,Regular,Books
+ORD_000096,2025-05-19 09:01:36,confirmed,Hải Phòng,2648757,11,14,True,True,VIP,Fashion
+ORD_000097,2025-05-20 09:01:36,confirmed,Hải Phòng,1993200,7,24,True,True,New,Books
+ORD_000098,2025-05-31 09:01:36,confirmed,Đà Nẵng,4870009,5,52,True,False,New,Electronics
+ORD_000099,2025-06-05 09:01:36,confirmed,Khác,1870207,19,38,False,False,Regular,Electronics
+ORD_000100,2025-05-22 09:01:36,confirmed,Cần Thơ,3879098,9,12,True,True,New,Sports
+ORD_000101,2025-06-01 09:01:36,confirmed,Khác,3908690,4,16,True,True,VIP,Fashion
+ORD_000102,2025-06-15 09:01:36,delivered,TP.HCM,3666324,11,24,True,True,VIP,Sports
+ORD_000103,2025-05-24 09:01:36,confirmed,Hà Nội,1491861,5,13,True,True,Regular,Sports
+ORD_000104,2025-06-09 09:01:36,confirmed,Khác,2650901,5,19,True,True,New,Books
+ORD_000105,2025-06-16 09:01:36,pending,Hải Phòng,434376,9,13,True,True,Regular,Home
+ORD_000106,2025-06-05 09:01:36,confirmed,Hải Phòng,274025,2,22,True,True,New,Home
+ORD_000107,2025-06-04 09:01:36,confirmed,Cần Thơ,2433346,3,22,True,True,VIP,Sports
+ORD_000108,2025-05-30 09:01:36,delivered,Đà Nẵng,3525472,8,55,True,False,Regular,Home
+ORD_000109,2025-06-07 09:01:36,confirmed,Cần Thơ,2517746,3,23,True,True,New,Books
+ORD_000110,2025-06-12 09:01:36,confirmed,Đà Nẵng,2811817,1,17,True,True,VIP,Books
+ORD_000111,2025-06-13 09:01:36,confirmed,Cần Thơ,3566571,1,20,True,True,VIP,Fashion
+ORD_000112,2025-06-02 09:01:36,confirmed,Hà Nội,1807570,8,24,True,True,Regular,Sports
+ORD_000113,2025-05-21 09:01:36,pending,Hà Nội,342174,41,56,False,False,New,Sports
+ORD_000114,2025-06-11 09:01:36,delivered,Hải Phòng,3522473,3,12,True,True,VIP,Fashion
+ORD_000115,2025-06-12 09:01:36,delivered,TP.HCM,4280676,8,66,True,False,New,Home
+ORD_000116,2025-06-02 09:01:36,cancelled,TP.HCM,3931802,7,19,True,True,New,Fashion
+ORD_000117,2025-05-29 09:01:36,delivered,Hà Nội,2417331,10,14,True,True,Regular,Home
+ORD_000118,2025-06-15 09:01:36,confirmed,Khác,2604467,5,16,True,True,New,Sports
+ORD_000119,2025-06-07 09:01:36,cancelled,Đà Nẵng,2888708,3,19,True,True,New,Sports
+ORD_000120,2025-05-29 09:01:36,confirmed,TP.HCM,4896586,6,69,True,False,Regular,Fashion
+ORD_000121,2025-06-13 09:01:36,delivered,Khác,3297998,1,19,True,True,Regular,Fashion
+ORD_000122,2025-06-01 09:01:36,cancelled,Đà Nẵng,941919,21,21,False,True,Regular,Electronics
+ORD_000123,2025-06-02 09:01:36,confirmed,Khác,1394875,1,18,True,True,VIP,Books
+ORD_000124,2025-06-11 09:01:36,confirmed,Khác,773733,34,18,False,True,Regular,Sports
+ORD_000125,2025-05-29 09:01:36,confirmed,Hải Phòng,673954,44,27,False,False,VIP,Home
+ORD_000126,2025-05-24 09:01:36,confirmed,Khác,943115,7,65,True,False,Regular,Fashion
+ORD_000127,2025-06-08 09:01:36,delivered,Hà Nội,2560947,1,24,True,True,Regular,Home
+ORD_000128,2025-05-30 09:01:36,cancelled,TP.HCM,1525926,9,22,True,True,VIP,Electronics
+ORD_000129,2025-06-05 09:01:36,confirmed,Hải Phòng,1300558,10,19,True,True,VIP,Books
+ORD_000130,2025-06-06 09:01:36,confirmed,Cần Thơ,2512829,5,24,True,True,New,Sports
+ORD_000131,2025-05-22 09:01:36,confirmed,Khác,3659361,6,44,True,False,New,Home
+ORD_000132,2025-05-31 09:01:36,confirmed,Hà Nội,2089825,4,55,True,False,Regular,Sports
+ORD_000133,2025-05-28 09:01:36,confirmed,Cần Thơ,2402508,12,22,True,True,VIP,Sports
+ORD_000134,2025-06-13 09:01:36,confirmed,Khác,4266850,12,63,True,False,Regular,Fashion
+ORD_000135,2025-06-05 09:01:36,pending,Đà Nẵng,1247387,4,21,True,True,New,Electronics
+ORD_000136,2025-06-14 09:01:36,confirmed,Hà Nội,4961817,1,19,True,True,Regular,Fashion
+ORD_000137,2025-05-19 09:01:36,confirmed,TP.HCM,1208636,6,14,True,True,New,Home
+ORD_000138,2025-06-02 09:01:36,delivered,Cần Thơ,2575825,5,16,True,True,New,Home
+ORD_000139,2025-06-11 09:01:36,confirmed,Khác,3433729,2,15,True,True,New,Home
+ORD_000140,2025-05-19 09:01:36,pending,Cần Thơ,3191920,1,13,True,True,New,Home
+ORD_000141,2025-06-04 09:01:36,pending,Khác,2061440,11,31,True,False,Regular,Electronics
+ORD_000142,2025-06-05 09:01:36,confirmed,TP.HCM,630302,9,21,True,True,New,Books
+ORD_000143,2025-06-15 09:01:36,confirmed,Hà Nội,412157,11,14,True,True,Regular,Books
+ORD_000144,2025-05-20 09:01:36,confirmed,Đà Nẵng,4631463,9,19,True,True,Regular,Sports
+ORD_000145,2025-06-09 09:01:36,confirmed,Hải Phòng,3523524,7,19,True,True,Regular,Electronics
+ORD_000146,2025-06-08 09:01:36,confirmed,Đà Nẵng,933446,8,15,True,True,New,Home
+ORD_000147,2025-06-03 09:01:36,delivered,Đà Nẵng,1692229,11,18,True,True,VIP,Books
+ORD_000148,2025-05-19 09:01:36,confirmed,Hà Nội,2897677,11,12,True,True,VIP,Fashion
+ORD_000149,2025-06-11 09:01:36,confirmed,TP.HCM,1911531,2,20,True,True,VIP,Home
+ORD_000150,2025-06-10 09:01:36,confirmed,TP.HCM,4631655,10,14,True,True,Regular,Fashion
+ORD_000151,2025-05-20 09:01:36,pending,TP.HCM,2815991,1,17,True,True,VIP,Fashion
+ORD_000152,2025-05-25 09:01:36,confirmed,Khác,633163,12,13,True,True,Regular,Books
+ORD_000153,2025-06-10 09:01:36,confirmed,TP.HCM,463772,10,20,True,True,New,Sports
+ORD_000154,2025-05-26 09:01:36,confirmed,Cần Thơ,3675842,1,19,True,True,New,Electronics
+ORD_000155,2025-06-01 09:01:36,pending,Đà Nẵng,1344314,8,13,True,True,VIP,Fashion
+ORD_000156,2025-05-25 09:01:36,confirmed,Cần Thơ,4550633,10,17,True,True,Regular,Books
+ORD_000157,2025-06-02 09:01:36,delivered,Khác,4724935,2,13,True,True,New,Fashion
+ORD_000158,2025-05-30 09:01:36,delivered,Cần Thơ,3589574,4,19,True,True,New,Electronics
+ORD_000159,2025-05-27 09:01:36,confirmed,Khác,4078447,11,14,True,True,VIP,Electronics
+ORD_000160,2025-06-12 09:01:36,delivered,Đà Nẵng,1191487,7,23,True,True,New,Electronics
+ORD_000161,2025-06-04 09:01:36,confirmed,Cần Thơ,3066195,48,13,False,True,New,Books
+ORD_000162,2025-06-13 09:01:36,delivered,Đà Nẵng,3049822,1,63,True,False,VIP,Sports
+ORD_000163,2025-06-02 09:01:36,delivered,Đà Nẵng,4766293,11,13,True,True,Regular,Electronics
+ORD_000164,2025-06-10 09:01:36,confirmed,Hải Phòng,4770271,4,20,True,True,VIP,Sports
+ORD_000165,2025-06-15 09:01:36,confirmed,Đà Nẵng,2691951,12,14,True,True,Regular,Home
+ORD_000166,2025-05-17 09:01:36,delivered,Hà Nội,1290130,3,18,True,True,New,Electronics
+ORD_000167,2025-05-19 09:01:36,confirmed,Đà Nẵng,1420444,4,19,True,True,Regular,Home
+ORD_000168,2025-06-09 09:01:36,confirmed,TP.HCM,1420449,10,12,True,True,New,Electronics
+ORD_000169,2025-06-07 09:01:36,confirmed,Hải Phòng,3808135,8,19,True,True,Regular,Home
+ORD_000170,2025-05-23 09:01:36,confirmed,Đà Nẵng,4182171,2,13,True,True,New,Home
+ORD_000171,2025-05-18 09:01:36,delivered,Đà Nẵng,1871959,10,15,True,True,VIP,Home
+ORD_000172,2025-05-26 09:01:36,confirmed,TP.HCM,1183688,1,18,True,True,Regular,Sports
+ORD_000173,2025-06-08 09:01:36,confirmed,Đà Nẵng,704613,9,24,True,True,Regular,Electronics
+ORD_000174,2025-05-30 09:01:36,confirmed,Cần Thơ,4910025,2,61,True,False,Regular,Books
+ORD_000175,2025-05-26 09:01:36,delivered,Hải Phòng,3959572,1,35,True,False,New,Home
+ORD_000176,2025-05-19 09:01:36,confirmed,Cần Thơ,4495316,2,21,True,True,VIP,Books
+ORD_000177,2025-06-13 09:01:36,delivered,TP.HCM,740716,6,24,True,True,New,Electronics
+ORD_000178,2025-06-02 09:01:36,confirmed,TP.HCM,2081966,6,22,True,True,VIP,Fashion
+ORD_000179,2025-05-25 09:01:36,pending,Khác,732109,10,24,True,True,VIP,Books
+ORD_000180,2025-05-31 09:01:36,confirmed,Khác,2811267,10,21,True,True,New,Home
+ORD_000181,2025-05-21 09:01:36,confirmed,Đà Nẵng,571205,8,16,True,True,Regular,Sports
+ORD_000182,2025-05-19 09:01:36,confirmed,Đà Nẵng,743666,8,17,True,True,New,Electronics
+ORD_000183,2025-06-05 09:01:36,pending,Khác,444123,7,20,True,True,Regular,Sports
+ORD_000184,2025-06-06 09:01:36,cancelled,Hà Nội,3879261,10,14,True,True,VIP,Home
+ORD_000185,2025-06-08 09:01:36,confirmed,Khác,3772182,11,15,True,True,Regular,Sports
+ORD_000186,2025-06-02 09:01:36,delivered,Cần Thơ,3529006,6,16,True,True,Regular,Sports
+ORD_000187,2025-05-18 09:01:36,delivered,Hà Nội,4780534,11,17,True,True,New,Books
+ORD_000188,2025-05-26 09:01:36,confirmed,TP.HCM,2896443,11,63,True,False,VIP,Sports
+ORD_000189,2025-06-07 09:01:36,confirmed,Khác,3387981,6,22,True,True,VIP,Sports
+ORD_000190,2025-06-08 09:01:36,confirmed,Đà Nẵng,1172011,32,22,False,True,New,Sports
+ORD_000191,2025-05-19 09:01:36,confirmed,Đà Nẵng,2690956,7,12,True,True,VIP,Fashion
+ORD_000192,2025-05-27 09:01:36,cancelled,TP.HCM,747307,44,14,False,True,Regular,Electronics
+ORD_000193,2025-06-02 09:01:36,cancelled,Khác,2924984,12,27,True,False,New,Fashion
+ORD_000194,2025-06-05 09:01:36,delivered,Hải Phòng,1488643,3,23,True,True,New,Books
+ORD_000195,2025-05-18 09:01:36,confirmed,Hải Phòng,2490148,11,19,True,True,New,Books
+ORD_000196,2025-05-24 09:01:36,confirmed,TP.HCM,3185673,5,55,True,False,New,Sports
+ORD_000197,2025-05-31 09:01:36,delivered,Hải Phòng,3611981,5,20,True,True,VIP,Fashion
+ORD_000198,2025-06-11 09:01:36,cancelled,Đà Nẵng,4751824,5,19,True,True,VIP,Sports
+ORD_000199,2025-06-13 09:01:36,cancelled,Cần Thơ,4406314,2,16,True,True,VIP,Books
+ORD_000200,2025-05-19 09:01:36,delivered,Hà Nội,3580407,27,17,False,True,VIP,Books
+ORD_000201,2025-06-02 09:01:36,delivered,TP.HCM,336454,7,48,True,False,Regular,Electronics
+ORD_000202,2025-06-12 09:01:36,confirmed,Hà Nội,2506518,6,14,True,True,Regular,Fashion
+ORD_000203,2025-06-10 09:01:36,confirmed,Hà Nội,2246845,8,13,True,True,VIP,Fashion
+ORD_000204,2025-06-03 09:01:36,cancelled,Đà Nẵng,2093470,46,24,False,True,Regular,Electronics
+ORD_000205,2025-05-18 09:01:36,delivered,Hà Nội,1029943,11,19,True,True,Regular,Sports
+ORD_000206,2025-06-03 09:01:36,confirmed,TP.HCM,2543366,9,23,True,True,Regular,Electronics
+ORD_000207,2025-06-05 09:01:36,confirmed,Khác,818181,10,22,True,True,New,Home
+ORD_000208,2025-05-19 09:01:36,delivered,Hải Phòng,270576,47,20,False,True,Regular,Books
+ORD_000209,2025-05-18 09:01:36,confirmed,Đà Nẵng,666730,6,12,True,True,Regular,Fashion
+ORD_000210,2025-06-09 09:01:36,confirmed,Đà Nẵng,1219120,2,23,True,True,VIP,Home
+ORD_000211,2025-06-03 09:01:36,confirmed,Khác,3997539,11,24,True,True,New,Books
+ORD_000212,2025-06-06 09:01:36,delivered,Cần Thơ,410242,3,24,True,True,Regular,Fashion
+ORD_000213,2025-05-18 09:01:36,delivered,Hải Phòng,3440545,1,16,True,True,New,Books
+ORD_000214,2025-05-25 09:01:36,confirmed,Hà Nội,2884386,11,17,True,True,Regular,Electronics
+ORD_000215,2025-06-11 09:01:36,delivered,Đà Nẵng,1667136,7,18,True,True,Regular,Books
+ORD_000216,2025-05-28 09:01:36,confirmed,Khác,3660961,46,13,False,True,VIP,Books
+ORD_000217,2025-06-05 09:01:36,confirmed,Hà Nội,771666,24,17,False,True,Regular,Home
+ORD_000218,2025-05-26 09:01:36,delivered,Cần Thơ,3048989,12,23,True,True,Regular,Electronics
+ORD_000219,2025-06-09 09:01:36,delivered,Đà Nẵng,581154,6,18,True,True,VIP,Books
+ORD_000220,2025-05-28 09:01:36,delivered,TP.HCM,3775660,12,12,True,True,VIP,Fashion
+ORD_000221,2025-05-19 09:01:36,delivered,Hải Phòng,371667,11,18,True,True,New,Fashion
+ORD_000222,2025-06-07 09:01:36,confirmed,Hà Nội,4914404,6,24,True,True,VIP,Sports
+ORD_000223,2025-05-28 09:01:36,confirmed,Hà Nội,1660684,11,13,True,True,Regular,Sports
+ORD_000224,2025-05-29 09:01:36,confirmed,Khác,3843610,2,16,True,True,VIP,Sports
+ORD_000225,2025-05-26 09:01:36,confirmed,Hà Nội,3892008,8,14,True,True,VIP,Books
+ORD_000226,2025-05-19 09:01:36,confirmed,Hà Nội,4713710,6,23,True,True,New,Home
+ORD_000227,2025-06-14 09:01:36,pending,Khác,1560381,3,23,True,True,Regular,Sports
+ORD_000228,2025-05-24 09:01:36,confirmed,Cần Thơ,320486,4,15,True,True,Regular,Sports
+ORD_000229,2025-06-04 09:01:36,cancelled,Hà Nội,2694518,9,13,True,True,Regular,Books
+ORD_000230,2025-06-02 09:01:36,delivered,TP.HCM,2759420,7,13,True,True,New,Electronics
+ORD_000231,2025-05-31 09:01:36,delivered,Hải Phòng,1626417,9,24,True,True,VIP,Books
+ORD_000232,2025-06-02 09:01:36,confirmed,TP.HCM,2651181,1,20,True,True,VIP,Fashion
+ORD_000233,2025-05-27 09:01:36,confirmed,Đà Nẵng,761524,27,20,False,True,Regular,Fashion
+ORD_000234,2025-06-06 09:01:36,confirmed,Hải Phòng,4575138,30,16,False,True,VIP,Sports
+ORD_000235,2025-06-06 09:01:36,confirmed,Hải Phòng,2932158,10,22,True,True,New,Electronics
+ORD_000236,2025-06-12 09:01:36,delivered,Hải Phòng,2320094,2,22,True,True,New,Fashion
+ORD_000237,2025-06-10 09:01:36,confirmed,Khác,4676635,10,19,True,True,Regular,Home
+ORD_000238,2025-06-01 09:01:36,confirmed,Hà Nội,602586,11,19,True,True,VIP,Books
+ORD_000239,2025-05-30 09:01:36,delivered,Đà Nẵng,2778620,4,14,True,True,New,Home
+ORD_000240,2025-05-29 09:01:36,confirmed,Đà Nẵng,2127844,6,13,True,True,Regular,Electronics
+ORD_000241,2025-05-25 09:01:36,pending,Cần Thơ,3607568,3,16,True,True,VIP,Fashion
+ORD_000242,2025-06-12 09:01:36,pending,TP.HCM,4279754,10,15,True,True,New,Books
+ORD_000243,2025-06-01 09:01:36,pending,Hải Phòng,3935528,8,18,True,True,VIP,Fashion
+ORD_000244,2025-06-04 09:01:36,confirmed,Khác,4047568,1,21,True,True,Regular,Sports
+ORD_000245,2025-05-17 09:01:36,confirmed,Khác,3168365,7,16,True,True,Regular,Home
+ORD_000246,2025-05-18 09:01:36,pending,Hải Phòng,2520966,10,17,True,True,VIP,Books
+ORD_000247,2025-06-02 09:01:36,confirmed,Khác,1096659,9,21,True,True,VIP,Electronics
+ORD_000248,2025-05-29 09:01:36,pending,TP.HCM,1769818,6,17,True,True,New,Sports
+ORD_000249,2025-05-29 09:01:36,pending,Đà Nẵng,4074053,1,23,True,True,New,Books
+ORD_000250,2025-05-21 09:01:36,cancelled,Đà Nẵng,1463165,9,21,True,True,Regular,Sports
+ORD_000251,2025-06-09 09:01:36,confirmed,Hải Phòng,4209131,10,20,True,True,New,Sports
+ORD_000252,2025-05-26 09:01:36,confirmed,Hà Nội,3594193,1,22,True,True,New,Home
+ORD_000253,2025-06-11 09:01:36,cancelled,Cần Thơ,2327430,12,21,True,True,New,Sports
+ORD_000254,2025-06-04 09:01:36,confirmed,Hải Phòng,3289267,1,14,True,True,VIP,Fashion
+ORD_000255,2025-05-18 09:01:36,confirmed,Cần Thơ,2731443,12,12,True,True,Regular,Fashion
+ORD_000256,2025-05-30 09:01:36,confirmed,Cần Thơ,622453,7,21,True,True,New,Fashion
+ORD_000257,2025-06-02 09:01:36,pending,Hải Phòng,3261035,6,55,True,False,Regular,Fashion
+ORD_000258,2025-05-31 09:01:36,delivered,Khác,2317630,6,22,True,True,New,Books
+ORD_000259,2025-05-23 09:01:36,confirmed,Đà Nẵng,2524342,30,15,False,True,New,Fashion
+ORD_000260,2025-06-08 09:01:36,confirmed,Khác,2393928,6,20,True,True,Regular,Electronics
+ORD_000261,2025-06-04 09:01:36,delivered,Đà Nẵng,1328730,7,50,True,False,Regular,Electronics
+ORD_000262,2025-05-26 09:01:36,pending,Khác,2251207,18,19,False,True,New,Books
+ORD_000263,2025-05-23 09:01:36,confirmed,Khác,2378526,9,20,True,True,VIP,Electronics
+ORD_000264,2025-06-05 09:01:36,confirmed,Hải Phòng,1993070,4,22,True,True,New,Fashion
+ORD_000265,2025-05-18 09:01:36,cancelled,Khác,1253157,6,13,True,True,VIP,Sports
+ORD_000266,2025-06-15 09:01:36,delivered,Cần Thơ,1773157,11,55,True,False,Regular,Home
+ORD_000267,2025-05-26 09:01:36,delivered,Hải Phòng,412880,2,15,True,True,VIP,Books
+ORD_000268,2025-06-14 09:01:36,delivered,Cần Thơ,1662895,1,50,True,False,New,Home
+ORD_000269,2025-06-14 09:01:36,confirmed,Đà Nẵng,2487076,5,13,True,True,Regular,Sports
+ORD_000270,2025-06-02 09:01:36,confirmed,Đà Nẵng,1717419,3,54,True,False,VIP,Home
+ORD_000271,2025-05-22 09:01:36,delivered,Hà Nội,2927901,11,14,True,True,Regular,Sports
+ORD_000272,2025-06-07 09:01:36,delivered,Cần Thơ,3687834,3,22,True,True,New,Home
+ORD_000273,2025-05-19 09:01:36,cancelled,Cần Thơ,2814567,2,14,True,True,VIP,Electronics
+ORD_000274,2025-05-25 09:01:36,pending,Đà Nẵng,4986034,8,17,True,True,New,Sports
+ORD_000275,2025-05-17 09:01:36,confirmed,Khác,1091741,6,12,True,True,Regular,Home
+ORD_000276,2025-05-22 09:01:36,confirmed,Đà Nẵng,1084954,9,70,True,False,New,Home
+ORD_000277,2025-05-28 09:01:36,delivered,TP.HCM,3916637,4,55,True,False,New,Sports
+ORD_000278,2025-05-28 09:01:36,delivered,Khác,1932169,9,59,True,False,VIP,Sports
+ORD_000279,2025-06-13 09:01:36,delivered,Đà Nẵng,755173,9,23,True,True,New,Electronics
+ORD_000280,2025-05-18 09:01:36,delivered,TP.HCM,1480237,9,20,True,True,Regular,Sports
+ORD_000281,2025-05-31 09:01:36,cancelled,Hà Nội,4381338,4,19,True,True,Regular,Electronics
+ORD_000282,2025-05-31 09:01:36,confirmed,Hải Phòng,3978710,7,12,True,True,New,Home
+ORD_000283,2025-06-09 09:01:36,confirmed,TP.HCM,4951226,5,23,True,True,VIP,Electronics
+ORD_000284,2025-05-30 09:01:36,confirmed,Hà Nội,4060020,2,12,True,True,VIP,Home
+ORD_000285,2025-05-30 09:01:36,confirmed,Khác,3626251,3,23,True,True,Regular,Books
+ORD_000286,2025-05-31 09:01:36,confirmed,Khác,4623978,7,22,True,True,VIP,Home
+ORD_000287,2025-05-20 09:01:36,confirmed,Khác,1968060,9,14,True,True,VIP,Electronics
+ORD_000288,2025-05-26 09:01:36,confirmed,Cần Thơ,2026561,12,20,True,True,VIP,Books
+ORD_000289,2025-05-28 09:01:36,confirmed,Hà Nội,370258,4,71,True,False,New,Books
+ORD_000290,2025-06-05 09:01:36,confirmed,Hà Nội,381658,1,13,True,True,Regular,Sports
+ORD_000291,2025-06-07 09:01:36,confirmed,Cần Thơ,3782286,1,12,True,True,VIP,Sports
+ORD_000292,2025-05-23 09:01:36,confirmed,TP.HCM,4932763,1,16,True,True,Regular,Sports
+ORD_000293,2025-06-05 09:01:36,delivered,Khác,4472570,6,14,True,True,VIP,Books
+ORD_000294,2025-05-26 09:01:36,confirmed,TP.HCM,3683618,9,72,True,False,New,Books
+ORD_000295,2025-05-18 09:01:36,confirmed,Khác,3592384,37,17,False,True,Regular,Fashion
+ORD_000296,2025-05-26 09:01:36,confirmed,Đà Nẵng,1310910,9,15,True,True,Regular,Electronics
+ORD_000297,2025-06-03 09:01:36,delivered,Cần Thơ,2137244,7,14,True,True,Regular,Fashion
+ORD_000298,2025-05-27 09:01:36,confirmed,Hải Phòng,1697875,8,13,True,True,VIP,Home
+ORD_000299,2025-05-29 09:01:36,delivered,TP.HCM,4787977,10,13,True,True,VIP,Books
+ORD_000300,2025-05-23 09:01:36,confirmed,TP.HCM,1694034,6,12,True,True,New,Electronics
+ORD_000301,2025-06-09 09:01:36,confirmed,Hải Phòng,1815580,43,69,False,False,Regular,Fashion
+ORD_000302,2025-06-03 09:01:36,confirmed,Khác,3113687,5,20,True,True,Regular,Home
+ORD_000303,2025-05-28 09:01:36,confirmed,Khác,4038371,8,24,True,True,Regular,Fashion
+ORD_000304,2025-05-28 09:01:36,delivered,Khác,1324088,1,15,True,True,VIP,Home
+ORD_000305,2025-06-03 09:01:36,delivered,Đà Nẵng,2029536,39,15,False,True,Regular,Sports
+ORD_000306,2025-06-12 09:01:36,pending,Đà Nẵng,2258613,9,22,True,True,Regular,Books
+ORD_000307,2025-05-31 09:01:36,confirmed,Hải Phòng,4196294,6,23,True,True,VIP,Sports
+ORD_000308,2025-06-06 09:01:36,confirmed,Khác,506968,46,13,False,True,VIP,Books
+ORD_000309,2025-05-21 09:01:36,delivered,Hà Nội,1934753,4,14,True,True,New,Books
+ORD_000310,2025-05-28 09:01:36,confirmed,Cần Thơ,4192419,11,21,True,True,VIP,Electronics
+ORD_000311,2025-06-03 09:01:36,confirmed,Đà Nẵng,4594096,1,23,True,True,Regular,Electronics
+ORD_000312,2025-06-02 09:01:36,confirmed,Hà Nội,907939,11,14,True,True,New,Fashion
+ORD_000313,2025-05-24 09:01:36,confirmed,Đà Nẵng,3429408,9,17,True,True,VIP,Home
+ORD_000314,2025-06-16 09:01:36,pending,TP.HCM,2616369,10,23,True,True,New,Electronics
+ORD_000315,2025-06-06 09:01:36,delivered,Cần Thơ,4736395,15,18,False,True,Regular,Electronics
+ORD_000316,2025-06-06 09:01:36,delivered,Khác,2878899,3,18,True,True,New,Electronics
+ORD_000317,2025-06-14 09:01:36,confirmed,Hải Phòng,4088785,1,23,True,True,Regular,Electronics
+ORD_000318,2025-06-15 09:01:36,confirmed,Khác,376000,5,61,True,False,VIP,Home
+ORD_000319,2025-05-17 09:01:36,confirmed,Cần Thơ,745398,22,23,False,True,Regular,Fashion
+ORD_000320,2025-06-04 09:01:36,confirmed,Đà Nẵng,3319935,7,20,True,True,New,Fashion
+ORD_000321,2025-06-11 09:01:36,confirmed,Hà Nội,919447,18,17,False,True,Regular,Fashion
+ORD_000322,2025-06-12 09:01:36,delivered,Cần Thơ,2837845,10,21,True,True,VIP,Home
+ORD_000323,2025-06-11 09:01:36,delivered,Cần Thơ,3722603,44,20,False,True,VIP,Sports
+ORD_000324,2025-06-07 09:01:36,confirmed,Khác,716618,10,15,True,True,VIP,Home
+ORD_000325,2025-05-21 09:01:36,pending,Đà Nẵng,3125772,11,18,True,True,VIP,Electronics
+ORD_000326,2025-05-17 09:01:36,delivered,Hà Nội,1211549,41,16,False,True,VIP,Fashion
+ORD_000327,2025-05-30 09:01:36,confirmed,Hà Nội,851777,9,13,True,True,Regular,Sports
+ORD_000328,2025-05-19 09:01:36,delivered,Đà Nẵng,3571290,6,25,True,False,Regular,Electronics
+ORD_000329,2025-06-09 09:01:36,confirmed,Khác,3293811,4,14,True,True,VIP,Fashion
+ORD_000330,2025-05-25 09:01:36,confirmed,Cần Thơ,2414935,8,14,True,True,Regular,Home
+ORD_000331,2025-06-01 09:01:36,confirmed,Khác,4259092,6,15,True,True,New,Sports
+ORD_000332,2025-05-23 09:01:36,delivered,Đà Nẵng,3286747,3,18,True,True,Regular,Books
+ORD_000333,2025-05-27 09:01:36,confirmed,Đà Nẵng,2789934,11,33,True,False,New,Fashion
+ORD_000334,2025-06-01 09:01:36,confirmed,Khác,4218867,7,43,True,False,New,Fashion
+ORD_000335,2025-05-27 09:01:36,confirmed,TP.HCM,4677068,7,21,True,True,VIP,Sports
+ORD_000336,2025-05-17 09:01:36,confirmed,Cần Thơ,2543863,42,38,False,False,New,Electronics
+ORD_000337,2025-06-12 09:01:36,cancelled,Khác,2640344,7,14,True,True,VIP,Home
+ORD_000338,2025-06-07 09:01:36,delivered,Cần Thơ,4120112,7,13,True,True,New,Books
+ORD_000339,2025-06-03 09:01:36,confirmed,Đà Nẵng,4603893,12,12,True,True,New,Electronics
+ORD_000340,2025-05-20 09:01:36,confirmed,Khác,471587,11,14,True,True,New,Books
+ORD_000341,2025-06-16 09:01:36,confirmed,Đà Nẵng,1962280,7,13,True,True,New,Sports
+ORD_000342,2025-06-03 09:01:36,confirmed,Cần Thơ,3984455,10,17,True,True,New,Sports
+ORD_000343,2025-06-08 09:01:36,confirmed,Hà Nội,2578265,6,55,True,False,Regular,Electronics
+ORD_000344,2025-05-20 09:01:36,confirmed,Đà Nẵng,3919606,12,16,True,True,VIP,Sports
+ORD_000345,2025-06-01 09:01:36,confirmed,Cần Thơ,2775206,2,23,True,True,VIP,Home
+ORD_000346,2025-05-18 09:01:36,delivered,Khác,1017400,2,17,True,True,New,Fashion
+ORD_000347,2025-06-15 09:01:36,delivered,TP.HCM,2876542,28,20,False,True,New,Books
+ORD_000348,2025-06-16 09:01:36,confirmed,Khác,3725006,7,14,True,True,Regular,Electronics
+ORD_000349,2025-06-09 09:01:36,confirmed,Cần Thơ,137329,4,18,True,True,New,Fashion
+ORD_000350,2025-05-23 09:01:36,delivered,Hải Phòng,953558,12,13,True,True,New,Fashion
+ORD_000351,2025-05-28 09:01:36,confirmed,Cần Thơ,4526794,8,22,True,True,New,Home
+ORD_000352,2025-06-05 09:01:36,cancelled,Đà Nẵng,3940812,7,17,True,True,New,Fashion
+ORD_000353,2025-06-12 09:01:36,delivered,Hà Nội,1223635,5,62,True,False,Regular,Electronics
+ORD_000354,2025-05-24 09:01:36,confirmed,Hải Phòng,3358666,3,14,True,True,Regular,Sports
+ORD_000355,2025-05-21 09:01:36,confirmed,Hải Phòng,1553198,7,22,True,True,New,Fashion
+ORD_000356,2025-06-01 09:01:36,delivered,Hải Phòng,549723,3,19,True,True,Regular,Electronics
+ORD_000357,2025-06-01 09:01:36,confirmed,Khác,4252108,7,57,True,False,Regular,Books
+ORD_000358,2025-05-30 09:01:36,confirmed,Hải Phòng,358878,8,13,True,True,VIP,Home
+ORD_000359,2025-05-18 09:01:36,pending,Cần Thơ,4845019,9,24,True,True,New,Books
+ORD_000360,2025-06-03 09:01:36,confirmed,Hải Phòng,3177459,10,24,True,True,New,Electronics
+ORD_000361,2025-06-10 09:01:36,confirmed,Hà Nội,2176445,9,18,True,True,Regular,Electronics
+ORD_000362,2025-05-31 09:01:36,delivered,TP.HCM,1860585,2,13,True,True,New,Sports
+ORD_000363,2025-06-08 09:01:36,confirmed,TP.HCM,1267987,12,18,True,True,VIP,Fashion
+ORD_000364,2025-06-11 09:01:36,confirmed,Hải Phòng,1512451,6,21,True,True,Regular,Home
+ORD_000365,2025-05-26 09:01:36,pending,Hà Nội,1237402,9,68,True,False,Regular,Electronics
+ORD_000366,2025-05-25 09:01:36,confirmed,TP.HCM,1326778,3,14,True,True,New,Home
+ORD_000367,2025-06-12 09:01:36,pending,Hải Phòng,2354162,11,14,True,True,New,Books
+ORD_000368,2025-05-29 09:01:36,pending,Hà Nội,3479357,11,24,True,True,New,Home
+ORD_000369,2025-06-08 09:01:36,confirmed,Đà Nẵng,4981796,36,19,False,True,VIP,Electronics
+ORD_000370,2025-06-09 09:01:36,confirmed,Cần Thơ,1927289,35,59,False,False,Regular,Fashion
+ORD_000371,2025-06-01 09:01:36,confirmed,TP.HCM,4849144,5,21,True,True,Regular,Home
+ORD_000372,2025-06-14 09:01:36,confirmed,Cần Thơ,236577,1,22,True,True,VIP,Fashion
+ORD_000373,2025-05-31 09:01:36,confirmed,TP.HCM,2632231,7,23,True,True,VIP,Home
+ORD_000374,2025-05-19 09:01:36,delivered,Khác,1488525,5,22,True,True,VIP,Books
+ORD_000375,2025-06-06 09:01:36,confirmed,Khác,865034,12,18,True,True,New,Electronics
+ORD_000376,2025-05-17 09:01:36,confirmed,Hải Phòng,3833491,2,15,True,True,VIP,Electronics
+ORD_000377,2025-06-08 09:01:36,delivered,Khác,1208765,2,52,True,False,Regular,Electronics
+ORD_000378,2025-05-24 09:01:36,confirmed,Đà Nẵng,3183330,12,13,True,True,Regular,Fashion
+ORD_000379,2025-05-29 09:01:36,delivered,TP.HCM,673878,3,22,True,True,New,Sports
+ORD_000380,2025-05-17 09:01:36,confirmed,TP.HCM,1369818,3,23,True,True,Regular,Sports
+ORD_000381,2025-06-07 09:01:36,confirmed,TP.HCM,1133117,4,13,True,True,New,Books
+ORD_000382,2025-05-28 09:01:36,delivered,Đà Nẵng,806729,33,15,False,True,VIP,Sports
+ORD_000383,2025-06-05 09:01:36,delivered,Hà Nội,2630418,10,23,True,True,VIP,Sports
+ORD_000384,2025-06-05 09:01:36,cancelled,Hà Nội,2107738,12,22,True,True,Regular,Books
+ORD_000385,2025-05-20 09:01:36,delivered,Hà Nội,3129111,11,20,True,True,Regular,Fashion
+ORD_000386,2025-05-29 09:01:36,delivered,Khác,1549302,10,20,True,True,Regular,Electronics
+ORD_000387,2025-05-17 09:01:36,confirmed,Hà Nội,3438456,1,12,True,True,New,Home
+ORD_000388,2025-06-06 09:01:36,confirmed,Hà Nội,4601031,7,18,True,True,New,Sports
+ORD_000389,2025-05-21 09:01:36,delivered,TP.HCM,4599566,5,15,True,True,Regular,Books
+ORD_000390,2025-06-04 09:01:36,delivered,Đà Nẵng,3769898,11,13,True,True,New,Fashion
+ORD_000391,2025-05-18 09:01:36,pending,Hải Phòng,561613,7,21,True,True,Regular,Fashion
+ORD_000392,2025-05-20 09:01:36,confirmed,Cần Thơ,3008373,3,14,True,True,New,Sports
+ORD_000393,2025-06-11 09:01:36,confirmed,Khác,2354559,5,14,True,True,New,Electronics
+ORD_000394,2025-06-10 09:01:36,delivered,Hải Phòng,635797,6,16,True,True,Regular,Sports
+ORD_000395,2025-06-06 09:01:36,confirmed,Cần Thơ,4855385,8,12,True,True,VIP,Home
+ORD_000396,2025-05-22 09:01:36,pending,Khác,1067488,2,68,True,False,VIP,Sports
+ORD_000397,2025-05-17 09:01:36,cancelled,Đà Nẵng,3312664,1,19,True,True,VIP,Fashion
+ORD_000398,2025-06-15 09:01:36,confirmed,Khác,3617924,15,23,False,True,VIP,Home
+ORD_000399,2025-05-24 09:01:36,delivered,Hải Phòng,3227341,12,13,True,True,VIP,Sports
+ORD_000400,2025-06-07 09:01:36,delivered,Hà Nội,3463201,3,20,True,True,VIP,Books
+ORD_000401,2025-06-13 09:01:36,confirmed,Cần Thơ,166850,5,20,True,True,Regular,Fashion
+ORD_000402,2025-05-26 09:01:36,cancelled,Cần Thơ,3189303,5,15,True,True,New,Books
+ORD_000403,2025-06-10 09:01:36,confirmed,TP.HCM,153501,12,40,True,False,Regular,Electronics
+ORD_000404,2025-05-24 09:01:36,delivered,Đà Nẵng,112264,11,12,True,True,New,Books
+ORD_000405,2025-06-13 09:01:36,confirmed,TP.HCM,3621670,5,20,True,True,Regular,Electronics
+ORD_000406,2025-05-21 09:01:36,cancelled,Hải Phòng,3564971,2,15,True,True,New,Home
+ORD_000407,2025-05-31 09:01:36,confirmed,TP.HCM,3408058,18,20,False,True,VIP,Sports
+ORD_000408,2025-06-04 09:01:36,confirmed,Đà Nẵng,2289350,11,40,True,False,Regular,Books
+ORD_000409,2025-06-08 09:01:36,pending,TP.HCM,726523,6,16,True,True,VIP,Fashion
+ORD_000410,2025-06-10 09:01:36,confirmed,Cần Thơ,4009553,2,14,True,True,Regular,Books
+ORD_000411,2025-05-20 09:01:36,confirmed,Đà Nẵng,1105907,4,19,True,True,VIP,Fashion
+ORD_000412,2025-06-11 09:01:36,pending,TP.HCM,2849732,12,12,True,True,VIP,Electronics
+ORD_000413,2025-06-08 09:01:36,pending,Khác,2606857,6,12,True,True,Regular,Fashion
+ORD_000414,2025-05-17 09:01:36,confirmed,TP.HCM,894613,41,20,False,True,Regular,Electronics
+ORD_000415,2025-06-11 09:01:36,delivered,TP.HCM,1196518,2,24,True,True,VIP,Books
+ORD_000416,2025-05-28 09:01:36,confirmed,Đà Nẵng,729038,11,21,True,True,VIP,Electronics
+ORD_000417,2025-05-23 09:01:36,confirmed,Đà Nẵng,1127836,8,13,True,True,VIP,Books
+ORD_000418,2025-05-18 09:01:36,confirmed,Cần Thơ,4261809,10,23,True,True,VIP,Books
+ORD_000419,2025-06-07 09:01:36,delivered,Đà Nẵng,2447590,6,14,True,True,Regular,Fashion
+ORD_000420,2025-05-18 09:01:36,delivered,Cần Thơ,3556041,10,16,True,True,New,Books
+ORD_000421,2025-05-18 09:01:36,delivered,Khác,4510848,7,15,True,True,VIP,Sports
+ORD_000422,2025-06-11 09:01:36,delivered,Cần Thơ,4667746,7,17,True,True,Regular,Home
+ORD_000423,2025-06-15 09:01:36,confirmed,Hà Nội,2774938,6,14,True,True,New,Fashion
+ORD_000424,2025-05-17 09:01:36,confirmed,Hải Phòng,3098364,5,19,True,True,New,Fashion
+ORD_000425,2025-05-22 09:01:36,confirmed,Khác,568995,11,20,True,True,VIP,Sports
+ORD_000426,2025-06-13 09:01:36,confirmed,TP.HCM,2084334,37,14,False,True,New,Home
+ORD_000427,2025-06-11 09:01:36,confirmed,Khác,3050123,6,26,True,False,New,Sports
+ORD_000428,2025-05-21 09:01:36,cancelled,Cần Thơ,4647670,4,24,True,True,Regular,Fashion
+ORD_000429,2025-06-01 09:01:36,confirmed,Hà Nội,4516170,1,15,True,True,Regular,Electronics
+ORD_000430,2025-05-27 09:01:36,confirmed,Khác,1588641,4,17,True,True,Regular,Electronics
+ORD_000431,2025-05-17 09:01:36,confirmed,Hải Phòng,3160917,12,32,True,False,VIP,Home
+ORD_000432,2025-06-08 09:01:36,delivered,Đà Nẵng,2806191,38,17,False,True,VIP,Fashion
+ORD_000433,2025-06-09 09:01:36,delivered,Khác,4814207,44,14,False,True,New,Sports
+ORD_000434,2025-06-11 09:01:36,confirmed,Cần Thơ,2673819,11,14,True,True,New,Home
+ORD_000435,2025-05-21 09:01:36,confirmed,Cần Thơ,4860390,1,61,True,False,VIP,Fashion
+ORD_000436,2025-06-05 09:01:36,delivered,Hà Nội,4262301,10,21,True,True,VIP,Home
+ORD_000437,2025-06-09 09:01:36,confirmed,Khác,844287,6,35,True,False,New,Home
+ORD_000438,2025-05-31 09:01:36,delivered,Đà Nẵng,2253002,4,13,True,True,VIP,Electronics
+ORD_000439,2025-05-18 09:01:36,delivered,Cần Thơ,4236271,12,14,True,True,Regular,Home
+ORD_000440,2025-06-03 09:01:36,confirmed,Khác,1992325,8,21,True,True,VIP,Books
+ORD_000441,2025-05-19 09:01:36,confirmed,Đà Nẵng,978497,1,17,True,True,VIP,Home
+ORD_000442,2025-05-22 09:01:36,pending,Hà Nội,2934934,3,20,True,True,New,Sports
+ORD_000443,2025-06-14 09:01:36,confirmed,TP.HCM,3742336,1,22,True,True,VIP,Electronics
+ORD_000444,2025-05-20 09:01:36,confirmed,Khác,4630900,4,20,True,True,Regular,Home
+ORD_000445,2025-05-26 09:01:36,delivered,Cần Thơ,1388405,1,20,True,True,VIP,Home
+ORD_000446,2025-05-17 09:01:36,pending,Hải Phòng,4129286,5,22,True,True,VIP,Electronics
+ORD_000447,2025-05-17 09:01:36,pending,Cần Thơ,1068959,11,13,True,True,Regular,Books
+ORD_000448,2025-06-01 09:01:36,delivered,Hải Phòng,3350813,11,22,True,True,VIP,Home
+ORD_000449,2025-06-14 09:01:36,confirmed,Cần Thơ,4001188,3,16,True,True,Regular,Fashion
+ORD_000450,2025-06-12 09:01:36,confirmed,Khác,911200,1,23,True,True,VIP,Home
+ORD_000451,2025-06-11 09:01:36,delivered,Cần Thơ,4483737,10,12,True,True,Regular,Sports
+ORD_000452,2025-06-07 09:01:36,confirmed,Cần Thơ,2606953,8,15,True,True,VIP,Books
+ORD_000453,2025-06-14 09:01:36,confirmed,Hải Phòng,1336880,1,20,True,True,VIP,Books
+ORD_000454,2025-05-22 09:01:36,pending,TP.HCM,457991,23,37,False,False,Regular,Electronics
+ORD_000455,2025-06-07 09:01:36,confirmed,Đà Nẵng,2782253,11,21,True,True,New,Electronics
+ORD_000456,2025-05-19 09:01:36,confirmed,Hải Phòng,3943300,7,16,True,True,VIP,Sports
+ORD_000457,2025-06-04 09:01:36,confirmed,TP.HCM,4852934,7,14,True,True,New,Sports
+ORD_000458,2025-06-10 09:01:36,confirmed,Hà Nội,2499920,19,61,False,False,New,Home
+ORD_000459,2025-06-14 09:01:36,confirmed,Hải Phòng,4068202,7,21,True,True,VIP,Fashion
+ORD_000460,2025-05-25 09:01:36,confirmed,Cần Thơ,425331,10,23,True,True,Regular,Home
+ORD_000461,2025-06-08 09:01:36,confirmed,Đà Nẵng,269725,12,16,True,True,Regular,Home
+ORD_000462,2025-05-26 09:01:36,delivered,Hà Nội,2012245,8,68,True,False,VIP,Home
+ORD_000463,2025-06-09 09:01:36,delivered,Hải Phòng,848992,6,18,True,True,VIP,Books
+ORD_000464,2025-05-23 09:01:36,confirmed,Hải Phòng,3236586,7,24,True,True,VIP,Sports
+ORD_000465,2025-06-11 09:01:36,pending,TP.HCM,4498031,5,18,True,True,New,Electronics
+ORD_000466,2025-05-22 09:01:36,confirmed,Hà Nội,3928968,4,15,True,True,VIP,Home
+ORD_000467,2025-06-08 09:01:36,confirmed,Cần Thơ,1139120,6,20,True,True,New,Electronics
+ORD_000468,2025-05-24 09:01:36,cancelled,Hải Phòng,4724922,10,19,True,True,Regular,Home
+ORD_000469,2025-05-22 09:01:36,confirmed,Hà Nội,2491335,5,23,True,True,VIP,Books
+ORD_000470,2025-05-18 09:01:36,pending,TP.HCM,1988376,10,15,True,True,New,Fashion
+ORD_000471,2025-05-25 09:01:36,confirmed,Khác,174641,9,24,True,True,Regular,Fashion
+ORD_000472,2025-06-06 09:01:36,pending,Đà Nẵng,2410042,1,21,True,True,Regular,Books
+ORD_000473,2025-06-13 09:01:36,confirmed,Khác,4467427,5,16,True,True,New,Books
+ORD_000474,2025-06-04 09:01:36,cancelled,Hải Phòng,2471265,9,48,True,False,Regular,Electronics
+ORD_000475,2025-06-01 09:01:36,confirmed,Đà Nẵng,2606441,5,16,True,True,VIP,Fashion
+ORD_000476,2025-06-02 09:01:36,pending,Hải Phòng,3489823,1,24,True,True,New,Home
+ORD_000477,2025-06-07 09:01:36,confirmed,Đà Nẵng,3611183,1,16,True,True,Regular,Books
+ORD_000478,2025-06-09 09:01:36,confirmed,Đà Nẵng,1965317,12,37,True,False,New,Sports
+ORD_000479,2025-06-06 09:01:36,pending,TP.HCM,4782924,11,16,True,True,VIP,Home
+ORD_000480,2025-05-20 09:01:36,confirmed,Hải Phòng,1635688,12,24,True,True,New,Home
+ORD_000481,2025-06-06 09:01:36,delivered,Cần Thơ,2879289,6,16,True,True,Regular,Home
+ORD_000482,2025-06-04 09:01:36,delivered,Hải Phòng,4968019,2,22,True,True,New,Electronics
+ORD_000483,2025-06-01 09:01:36,confirmed,Cần Thơ,4544607,9,22,True,True,Regular,Books
+ORD_000484,2025-05-18 09:01:36,delivered,Đà Nẵng,3532549,3,15,True,True,New,Books
+ORD_000485,2025-05-21 09:01:36,confirmed,Cần Thơ,2890298,12,13,True,True,New,Fashion
+ORD_000486,2025-05-27 09:01:36,cancelled,TP.HCM,4934177,1,15,True,True,VIP,Books
+ORD_000487,2025-06-11 09:01:36,confirmed,Khác,3702149,2,18,True,True,Regular,Books
+ORD_000488,2025-06-16 09:01:36,confirmed,Khác,3229801,1,15,True,True,VIP,Home
+ORD_000489,2025-06-10 09:01:36,pending,Khác,2187279,4,12,True,True,VIP,Home
+ORD_000490,2025-05-26 09:01:36,cancelled,TP.HCM,647667,7,16,True,True,VIP,Home
+ORD_000491,2025-06-16 09:01:36,confirmed,Đà Nẵng,3737847,12,20,True,True,New,Fashion
+ORD_000492,2025-05-27 09:01:36,delivered,TP.HCM,3483894,44,15,False,True,VIP,Fashion
+ORD_000493,2025-05-24 09:01:36,confirmed,Hải Phòng,4333173,3,12,True,True,VIP,Electronics
+ORD_000494,2025-05-28 09:01:36,confirmed,Đà Nẵng,4585669,1,22,True,True,New,Electronics
+ORD_000495,2025-06-05 09:01:36,confirmed,Hà Nội,1071315,19,12,False,True,Regular,Books
+ORD_000496,2025-05-29 09:01:36,confirmed,TP.HCM,178052,5,14,True,True,Regular,Books
+ORD_000497,2025-06-07 09:01:36,confirmed,Khác,1250611,9,21,True,True,Regular,Electronics
+ORD_000498,2025-06-02 09:01:36,confirmed,Hà Nội,4275337,2,24,True,True,VIP,Sports
+ORD_000499,2025-05-23 09:01:36,pending,Khác,3537284,9,47,True,False,Regular,Fashion
+ORD_000500,2025-05-18 09:01:36,pending,Đà Nẵng,2067172,4,19,True,True,VIP,Electronics
+ORD_000501,2025-06-07 09:01:36,delivered,Cần Thơ,1351114,2,22,True,True,VIP,Sports
+ORD_000502,2025-05-19 09:01:36,confirmed,TP.HCM,3931507,2,66,True,False,Regular,Home
+ORD_000503,2025-05-31 09:01:36,confirmed,Đà Nẵng,2723177,3,43,True,False,Regular,Electronics
+ORD_000504,2025-05-20 09:01:36,delivered,Khác,1530360,1,14,True,True,Regular,Home
+ORD_000505,2025-06-14 09:01:36,delivered,Hà Nội,3225781,10,23,True,True,Regular,Fashion
+ORD_000506,2025-05-20 09:01:36,confirmed,Khác,4111809,8,18,True,True,Regular,Fashion
+ORD_000507,2025-05-20 09:01:36,pending,Hà Nội,3589893,12,14,True,True,New,Books
+ORD_000508,2025-06-11 09:01:36,delivered,Đà Nẵng,341728,8,18,True,True,New,Fashion
+ORD_000509,2025-06-01 09:01:36,pending,Hà Nội,631301,20,53,False,False,Regular,Home
+ORD_000510,2025-05-17 09:01:36,delivered,Hải Phòng,4839666,11,23,True,True,VIP,Home
+ORD_000511,2025-06-02 09:01:36,delivered,Khác,2185214,12,18,True,True,Regular,Home
+ORD_000512,2025-06-07 09:01:36,confirmed,Hải Phòng,557733,7,20,True,True,VIP,Fashion
+ORD_000513,2025-06-02 09:01:36,pending,Cần Thơ,2789671,8,29,True,False,VIP,Home
+ORD_000514,2025-05-25 09:01:36,cancelled,Cần Thơ,2071322,4,18,True,True,VIP,Books
+ORD_000515,2025-05-31 09:01:36,confirmed,Cần Thơ,2751316,8,19,True,True,VIP,Books
+ORD_000516,2025-06-09 09:01:36,confirmed,Hải Phòng,4706174,2,12,True,True,VIP,Electronics
+ORD_000517,2025-06-11 09:01:36,confirmed,Hải Phòng,1835194,10,20,True,True,New,Books
+ORD_000518,2025-06-16 09:01:36,delivered,Đà Nẵng,4798885,1,19,True,True,New,Sports
+ORD_000519,2025-06-01 09:01:36,pending,Hà Nội,1960149,6,13,True,True,VIP,Home
+ORD_000520,2025-05-28 09:01:36,confirmed,Khác,991895,5,17,True,True,VIP,Fashion
+ORD_000521,2025-06-01 09:01:36,confirmed,Hà Nội,2233133,12,18,True,True,New,Fashion
+ORD_000522,2025-05-23 09:01:36,confirmed,TP.HCM,2934792,7,24,True,True,VIP,Books
+ORD_000523,2025-05-18 09:01:36,pending,Cần Thơ,4329515,20,19,False,True,VIP,Books
+ORD_000524,2025-05-17 09:01:36,delivered,Hải Phòng,4151126,1,18,True,True,New,Fashion
+ORD_000525,2025-06-08 09:01:36,delivered,Cần Thơ,2799821,12,13,True,True,New,Books
+ORD_000526,2025-05-30 09:01:36,confirmed,Đà Nẵng,3898745,28,17,False,True,VIP,Fashion
+ORD_000527,2025-05-30 09:01:36,confirmed,Hải Phòng,2733274,12,23,True,True,New,Sports
+ORD_000528,2025-06-06 09:01:36,confirmed,Khác,2996532,4,16,True,True,New,Fashion
+ORD_000529,2025-06-08 09:01:36,confirmed,Khác,2804331,3,23,True,True,New,Electronics
+ORD_000530,2025-06-10 09:01:36,cancelled,Khác,3602058,8,22,True,True,New,Sports
+ORD_000531,2025-05-26 09:01:36,delivered,Hà Nội,311998,7,20,True,True,Regular,Fashion
+ORD_000532,2025-05-18 09:01:36,pending,TP.HCM,2504305,4,24,True,True,New,Home
+ORD_000533,2025-05-21 09:01:36,pending,Hải Phòng,371005,12,15,True,True,Regular,Books
+ORD_000534,2025-05-20 09:01:36,confirmed,Khác,4808278,11,15,True,True,Regular,Fashion
+ORD_000535,2025-06-02 09:01:36,delivered,Hà Nội,3300947,12,22,True,True,Regular,Books
+ORD_000536,2025-06-16 09:01:36,pending,Hà Nội,208760,11,20,True,True,New,Home
+ORD_000537,2025-05-23 09:01:36,delivered,Khác,3184836,8,22,True,True,New,Sports
+ORD_000538,2025-06-09 09:01:36,confirmed,Cần Thơ,1588356,12,43,True,False,New,Electronics
+ORD_000539,2025-05-22 09:01:36,confirmed,Cần Thơ,2441363,45,12,False,True,New,Home
+ORD_000540,2025-05-21 09:01:36,confirmed,Khác,1398604,5,19,True,True,VIP,Fashion
+ORD_000541,2025-06-15 09:01:36,pending,Hải Phòng,2626269,1,22,True,True,Regular,Sports
+ORD_000542,2025-06-03 09:01:36,delivered,TP.HCM,4467162,12,15,True,True,VIP,Sports
+ORD_000543,2025-05-22 09:01:36,confirmed,TP.HCM,1889741,9,17,True,True,New,Home
+ORD_000544,2025-05-27 09:01:36,delivered,Hải Phòng,4083390,4,64,True,False,New,Electronics
+ORD_000545,2025-05-20 09:01:36,delivered,Hải Phòng,2145370,8,22,True,True,VIP,Home
+ORD_000546,2025-05-29 09:01:36,confirmed,Khác,2472541,2,20,True,True,VIP,Sports
+ORD_000547,2025-06-12 09:01:36,confirmed,Cần Thơ,467854,9,19,True,True,Regular,Fashion
+ORD_000548,2025-05-27 09:01:36,delivered,Hải Phòng,4572854,2,24,True,True,VIP,Electronics
+ORD_000549,2025-05-23 09:01:36,confirmed,Hà Nội,1824526,4,52,True,False,New,Books
+ORD_000550,2025-06-06 09:01:36,delivered,Hà Nội,3952260,2,14,True,True,New,Home
+ORD_000551,2025-05-18 09:01:36,confirmed,Hải Phòng,690911,1,16,True,True,New,Fashion
+ORD_000552,2025-06-15 09:01:36,cancelled,Cần Thơ,2754191,7,18,True,True,VIP,Books
+ORD_000553,2025-06-07 09:01:36,confirmed,Hà Nội,481823,1,21,True,True,New,Electronics
+ORD_000554,2025-05-28 09:01:36,confirmed,Đà Nẵng,825658,19,22,False,True,Regular,Books
+ORD_000555,2025-05-29 09:01:36,cancelled,Hải Phòng,1944367,11,14,True,True,VIP,Books
+ORD_000556,2025-06-11 09:01:36,confirmed,TP.HCM,2600279,9,22,True,True,New,Home
+ORD_000557,2025-06-16 09:01:36,confirmed,Hà Nội,450418,48,34,False,False,VIP,Sports
+ORD_000558,2025-06-05 09:01:36,confirmed,TP.HCM,2984436,9,44,True,False,VIP,Books
+ORD_000559,2025-06-14 09:01:36,delivered,TP.HCM,2220151,9,14,True,True,VIP,Electronics
+ORD_000560,2025-05-22 09:01:36,delivered,Cần Thơ,4710920,10,60,True,False,VIP,Home
+ORD_000561,2025-06-07 09:01:36,delivered,Cần Thơ,2875378,2,21,True,True,Regular,Fashion
+ORD_000562,2025-06-07 09:01:36,confirmed,TP.HCM,2765781,2,13,True,True,Regular,Books
+ORD_000563,2025-05-27 09:01:36,confirmed,Hải Phòng,4855182,5,14,True,True,Regular,Home
+ORD_000564,2025-06-16 09:01:36,confirmed,TP.HCM,3758473,1,24,True,True,Regular,Home
+ORD_000565,2025-05-21 09:01:36,confirmed,Cần Thơ,3109342,6,54,True,False,Regular,Books
+ORD_000566,2025-06-03 09:01:36,confirmed,TP.HCM,4618255,11,16,True,True,VIP,Home
+ORD_000567,2025-06-09 09:01:36,confirmed,Hải Phòng,361676,2,12,True,True,New,Sports
+ORD_000568,2025-05-29 09:01:36,confirmed,Đà Nẵng,4658951,4,60,True,False,New,Books
+ORD_000569,2025-06-06 09:01:36,cancelled,Hải Phòng,2541077,6,24,True,True,VIP,Books
+ORD_000570,2025-06-02 09:01:36,confirmed,Khác,2103877,7,12,True,True,New,Fashion
+ORD_000571,2025-06-10 09:01:36,confirmed,Hải Phòng,1326406,8,21,True,True,New,Books
+ORD_000572,2025-06-16 09:01:36,delivered,Hà Nội,2317588,4,15,True,True,Regular,Fashion
+ORD_000573,2025-05-18 09:01:36,confirmed,Cần Thơ,4039912,9,48,True,False,Regular,Electronics
+ORD_000574,2025-05-18 09:01:36,delivered,Khác,2394244,33,20,False,True,New,Home
+ORD_000575,2025-06-04 09:01:36,cancelled,Đà Nẵng,752948,3,18,True,True,New,Home
+ORD_000576,2025-05-29 09:01:36,pending,Đà Nẵng,4184090,27,17,False,True,Regular,Sports
+ORD_000577,2025-05-17 09:01:36,confirmed,Hà Nội,4416285,3,15,True,True,New,Home
+ORD_000578,2025-05-23 09:01:36,pending,Hà Nội,2032285,3,23,True,True,Regular,Home
+ORD_000579,2025-06-09 09:01:36,confirmed,Hải Phòng,1452631,11,15,True,True,New,Books
+ORD_000580,2025-05-17 09:01:36,confirmed,TP.HCM,4400359,3,14,True,True,VIP,Sports
+ORD_000581,2025-05-21 09:01:36,confirmed,Cần Thơ,4827858,5,58,True,False,New,Electronics
+ORD_000582,2025-06-14 09:01:36,pending,TP.HCM,3868190,11,13,True,True,New,Books
